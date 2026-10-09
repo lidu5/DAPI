@@ -1,8 +1,12 @@
 pipeline {
-    agent any
+     agent {
+        label 'builtin-linux'
+    }
+
     options {
-        timeout(time: 60, unit: 'MINUTES')
+        timestamps()
         disableConcurrentBuilds()
+        skipDefaultCheckout(true)
     }
     stages {
         stage('Checkout') {
