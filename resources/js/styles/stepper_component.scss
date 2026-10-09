@@ -1,0 +1,148 @@
+$default: #c5c5c5;
+$green-1: #75cc65;
+$transition: all 500ms ease;
+
+.wrapper-stepper{
+    padding: 60px;
+    border-radius: 23px;
+    border-radius: 32px;
+}
+
+.stepper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 0;
+    margin-bottom: 24px;
+
+    &-progress{
+        position: absolute;
+        background-color: $default;
+        height: 2px;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        &-bar{
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background-color: $green-1;
+            transition: $transition;
+        }
+    }
+}
+
+.stepper-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $default;
+    transition: $transition;
+    
+    &-counter{
+        height: 68px;
+        width: 68px;
+        display: grid;
+        place-items: center;
+        background-color: #fff;
+        border-radius: 100%;
+        border: 2px solid $default;
+        position: relative;
+
+        .icon-success{
+            position: absolute;
+            opacity: 0;
+            transform: scale(0);
+            width: 24px;
+            transition: $transition;
+        }
+
+        .number{
+            font-size: 22px;
+            transition: $transition;
+
+        }
+    }
+
+    &-title{
+        position: absolute;
+        font-size: 14px;
+        bottom: -24px;
+    }
+}
+
+.stepper-item.success{
+    .stepper-item-counter{
+        border-color: $green-1;
+        background-color: #c8ebc1;
+        color: #fff;
+        font-weight: 600;
+
+        .icon-success{
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .number{
+            opacity: 0;
+            transform: scale(0);
+
+        }
+    }
+
+    .stepper-item-title{
+        color: $green-1;
+    }
+}
+
+.stepper-item.current{
+    .stepper-item-counter{
+        border-color: $green-1;
+        background-color: $green-1;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .stepper-item-title{
+        color: #818181;
+    }
+}
+
+.stepper-pane{
+    color: #333;
+    text-align: center;
+    padding: 120px 60px;
+    box-shadow: 0 8px 12px rgba($color: #000000, $alpha: 0.09);
+    margin: 40px 0;
+}
+
+.controls{
+    display: flex;
+}
+
+.btn{
+    &:disabled{
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &--left{
+        margin-left: auto;
+    }
+}
+
+@media all and (max-width: 700px)
+{
+    .wrapper-stepper{
+        padding: 0;
+    }
+
+    .stepper-item-counter{
+        height: 30px;
+        width: 30px;
+    }
+}
