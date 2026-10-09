@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('digital_health_project_geographic_scope', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('digital_health_project_id');
-            $table->foreign('digital_health_project_id', 'ref51')->references('id')->on('digital_health_projects')->onDelete('cascade');
+            $table->foreign('digital_health_project_id', 'fk_2a32dc9d6e')->references('id')->on('digital_health_projects')->onDelete('cascade');
 
             $table->unsignedBigInteger('region_id');
-            $table->foreign('region_id', 'ref52')->references('id')->on('regions')->onDelete('cascade');
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->timestamps();
         });
     }

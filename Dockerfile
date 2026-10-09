@@ -1,9 +1,9 @@
 # ─── Stage 1: Node build (compile frontend assets) ───────────────────────────
-FROM node:18-alpine AS node_build
+FROM node:22-alpine AS node_build
 WORKDIR /app
 COPY package*.json ./
 COPY . .
-RUN rm -rf node_modules && npm ci && ./node_modules/.bin/mix --production
+RUN rm -rf node_modules && npm ci && npm run production
 
 # ─── Stage 2: PHP / Laravel production image ──────────────────────────────────
 FROM php:8.1-fpm-alpine
@@ -41,12 +41,22 @@ WORKDIR /var/www/html
 COPY . .
 
 # Copy compiled frontend assets from Stage 1
-COPY --from=node_build /app/public/js  ./public/js
-COPY --from=node_build /app/public/css ./public/css
-COPY --from=node_build /app/public/mix-manifest.json ./public/mix-manifest.json
+COPY --from=node_build /app/public ./public
+
+# Install phpredis extension
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del .build-deps
 
 # Install PHP dependencies (no dev)
 RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN chmod -R a+rX /var/www/html \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R ug+rwX storage bootstrap/cache
+RUN chmod -R a+rX /var/www/html \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R ug+rwX storage bootstrap/cache
 
 # Nginx config
 COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf

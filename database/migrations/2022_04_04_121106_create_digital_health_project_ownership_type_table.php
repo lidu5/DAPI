@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('digital_health_project_ownership_type', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('digital_health_project_id');
-            $table->foreign('digital_health_project_id', 'ref17')->references('id')->on('digital_health_projects')->onDelete('cascade');
+            $table->foreign('digital_health_project_id', 'fk_13fefa0494')->references('id')->on('digital_health_projects')->onDelete('cascade');
 
             $table->unsignedBigInteger('ownership_type_id');
-            $table->foreign('ownership_type_id', 'ref18')->references('id')->on('ownership_types')->onDelete('cascade');
+            $table->foreign('ownership_type_id')->references('id')->on('ownership_types')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('digital_health_project_id');
-            $table->foreign('digital_health_project_id', 'ref5')->references('id')->on('digital_health_projects')->onDelete('cascade');
+            $table->foreign('digital_health_project_id', 'fk_330c504e32')->references('id')->on('digital_health_projects')->onDelete('cascade');
 
             $table->unsignedBigInteger('deployment_location_id');
-            $table->foreign('deployment_location_id', 'ref6')->references('id')->on('deployment_locations')->onDelete('cascade');
+            $table->foreign('deployment_location_id', 'fk_ef3f6405cf')->references('id')->on('deployment_locations')->onDelete('cascade');
             
             $table->timestamps();
         });

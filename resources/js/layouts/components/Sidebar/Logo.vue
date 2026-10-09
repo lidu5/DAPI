@@ -2,11 +2,11 @@
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
-        <img v-if="logo" src="@/assets/moh/Moa picture.png" class="sidebar-logo">
+        <img v-if="logo" src="@/assets/moh/moa-picture.png" class="sidebar-logo">
         <h1 v-else class="sidebar-title">{{ title }} </h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" src="@/assets/moh/Moa picture.png" class="sidebar-logo">
+        <img v-if="logo" src="@/assets/moh/moa-picture.png" class="sidebar-logo">
         <h1 class="sidebar-title">{{ title }} </h1>
       </router-link>
     </transition>
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       title: 'DAPI',
-      logo: '@/assets/moh/Moa picture.png',
+      logo: '@/assets/moh/moa-picture.png',
     };
   },
 };

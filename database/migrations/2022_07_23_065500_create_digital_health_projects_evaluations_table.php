@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('digital_health_projects_evaluations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('digital_health_project_id');
-            $table->foreign('digital_health_project_id', 'ref45')->references('id')->on('digital_health_projects')->onDelete('cascade');
+            $table->foreign('digital_health_project_id', 'fk_ebc1dae1d2')->references('id')->on('digital_health_projects')->onDelete('cascade');
 
             $table->unsignedBigInteger('evaluation_metrics_id');
-            $table->foreign('evaluation_metrics_id', 'ref46')->references('id')->on('evaluation_metrics')->onDelete('cascade');
+            $table->foreign('evaluation_metrics_id', 'fk_19d6b94dd1')->references('id')->on('evaluation_metrics')->onDelete('cascade');
 
         $table->integer('score')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ;
             $table->timestamps();

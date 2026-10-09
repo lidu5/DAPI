@@ -11,7 +11,7 @@
     >
     <div class="logo-container">
       <img 
-        src="@/assets/moh/moa picture.png" 
+        src="@/assets/moh/moa-picture.png" 
         alt="Digital Health Project Inventory" 
         class="logo-main"
       />

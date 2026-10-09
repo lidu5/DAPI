@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
 
             $table->unsignedBigInteger('digital_health_project_id');
-            $table->foreign('digital_health_project_id', 'ref38')->references('id')->on('digital_health_projects')->onDelete('cascade');
+            $table->foreign('digital_health_project_id')->references('id')->on('digital_health_projects')->onDelete('cascade');
             $table->timestamps();
         });
     }

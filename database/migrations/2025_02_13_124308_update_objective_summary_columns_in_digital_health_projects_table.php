@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 return new class extends Migration {
     public function up(): void
     {
-        DB::statement('ALTER TABLE digital_health_projects ALTER COLUMN objective TYPE TEXT');
-        DB::statement('ALTER TABLE digital_health_projects ALTER COLUMN summary TYPE TEXT');
+        DB::statement('ALTER TABLE digital_health_projects MODIFY objective TEXT NOT NULL');
+        DB::statement('ALTER TABLE digital_health_projects MODIFY summary TEXT');
     }
 
     public function down(): void
     {
-        DB::statement('ALTER TABLE digital_health_projects ALTER COLUMN objective TYPE VARCHAR(255)');
-        DB::statement('ALTER TABLE digital_health_projects ALTER COLUMN summary TYPE VARCHAR(255)');
+        DB::statement('ALTER TABLE digital_health_projects MODIFY objective VARCHAR(255) NOT NULL');
+        DB::statement('ALTER TABLE digital_health_projects MODIFY summary VARCHAR(255)');
 
     }
 };
