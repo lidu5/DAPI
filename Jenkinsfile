@@ -15,7 +15,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(credentials: ['dapi-deploy-key']) {
-                    sh 'ssh -o StrictHostKeyChecking=accept-new moa@172.28.21.161 "/opt/dapi-app/deploy.sh"'
+                    sh 'ssh -o StrictHostKeyChecking=accept-new moa@10.10.20.103 "/opt/dapi-app/deploy.sh"'
                 }
             }
         }
