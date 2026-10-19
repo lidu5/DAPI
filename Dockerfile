@@ -3,6 +3,7 @@ FROM node:22-alpine AS node_build
 WORKDIR /app
 COPY package*.json ./
 COPY . .
+ENV MIX_BASE_API=/api
 RUN rm -rf node_modules && npm ci && npm run production
 
 # ─── Stage 2: PHP / Laravel production image ──────────────────────────────────
@@ -51,9 +52,8 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
 
 # Install PHP dependencies (no dev)
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-RUN chmod -R a+rX /var/www/html \
-    && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R ug+rwX storage bootstrap/cache
+
+# Make files readable by nginx/php-fpm; storage writable
 RUN chmod -R a+rX /var/www/html \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R ug+rwX storage bootstrap/cache
