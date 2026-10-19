@@ -2,7 +2,7 @@
     <div class="dashboard-editor-container">
         <el-col :span="24" class="section-title-container">
             <h2 class="section-title">Project Analytics</h2>
-            <p class = "text">Explore real-time data and insights on the current state of Digital Health Solutions (DHS) in Ethiopia, highlighting the progress, challenges, and impact of technology in transforming healthcare across the nation.</p>
+            <p class = "text">Explore real-time data and insights on the current state of Digital Agriculture Solutions (DAS) in Ethiopia, highlighting the progress, challenges, and impact of technology in transforming agriculture across the nation.</p>
     </el-col>
       <panel-group />
   

@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <p>Digital health interventions of the application</p>
+    <p>Digital agriculture interventions of the application</p>
     <el-row v-if="editor" v-permission="['edit project']">
       <el-button
         class="filter-item"
@@ -22,7 +22,7 @@
       <el-form-item label="Activity Name">
         <el-input v-model="activity.name" :maxlength="255" show-word-limit />
       </el-form-item>
-      <el-form-item label="Digital Health Interventions">
+      <el-form-item label="Digital Agriculture Interventions">
       <el-row v-if="interventions_type" v-for="interv_type in interventions_type">
         <el-col :span="4">
           <h4>{{ interv_type }}</h4>

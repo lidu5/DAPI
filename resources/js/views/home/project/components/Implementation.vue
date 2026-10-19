@@ -45,7 +45,7 @@
     </el-form-item>
 
 
-    <el-form-item label="Where is (will) your DAS implemented in?" prop="das_implemeted">
+    <el-form-item label="Where is (will) your DAS implemented in?" prop="dhs_implemeted">
       <el-select required v-model="project.dhs_implemeted" placeholder="please select">
         <el-option label="Public" value="Public" />
         <el-option label="Private" value="Private" />

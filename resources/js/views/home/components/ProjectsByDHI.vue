@@ -63,7 +63,7 @@ export default {
 console.log(result)
         this.chart.setOption({
           title: {
-            text: 'Projects by Digital Health Interventions',
+            text: 'Projects by Digital Agriculture Interventions',
             left: 'center',
             textStyle: {
               color: '#000000',

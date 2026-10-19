@@ -274,9 +274,6 @@ import Resource from "./components/Resource.vue";
           this.project.components = response.components
           this.project.component = this.project.components[0]?.id
         }
-        if(!this.isEmpty(response.fhir_compliant)){
-          this.project.fhir_compliant = response.fhir_compliant == true ? 1 : 0
-        }
         if(!this.isEmpty(response.standards)){
           this.project.standards = response.standards
           this.project.standard = this.project.standards.map((standard) => standard.id)

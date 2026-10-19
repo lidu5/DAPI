@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <p>Resources related to a given digital health project, which could be documentations, source codes and manuals are attached in this subsection</p>
+    <p>Resources related to a given digital agriculture project, which could be documentations, source codes and manuals are attached in this subsection</p>
     <el-row v-if="editor" v-permission="['edit project']">
       <el-button class="filter-item" type="primary" @click="dialogVisible = true">
         <el-icon class="el-icon--left"><Plus /></el-icon> {{ $t("table.add") }}

@@ -2,31 +2,31 @@
   <div class="app-container">
     <el-descriptions
       class="margin-top"
-      title="Implementation of the Digital Health Solution (DHS)"
+      title="Implementation of the Digital Agriculture Solution (DAS)"
       size="large"
       :column="1"
       border
     >
-      <el-descriptions-item label="Health focus area(s) addressed by the DHS">
+      <el-descriptions-item label="Health focus area(s) addressed by the DAS">
         {{ project.focus_areas.map((focus_area) => focus_area.name).join(", ") }}
       </el-descriptions-item>
-      <el-descriptions-item label="Health system challenges addressed by the DHS">
+      <el-descriptions-item label="Health system challenges addressed by the DAS">
         {{ project.challenges.map((challenge) => challenge.name).join(", ") }}
       </el-descriptions-item>
-      <el-descriptions-item label="MoH contribution to this DHS implementation">
+      <el-descriptions-item label="MoH contribution to this DAS implementation">
         {{ project.moh_contribution }}
       </el-descriptions-item>
       <el-descriptions-item label="Implementing Partners">
         {{ project.implementing_partners.map((implementing_partner) => implementing_partner.name).join(", ") }}
       </el-descriptions-item>
-      <el-descriptions-item label="Funding Source DHS implementation">
+      <el-descriptions-item label="Funding Source DAS implementation">
          {{ Array.isArray(project.funding_sources) ? project.funding_sources.join(', ') : project.funding_sources }}
        </el-descriptions-item>
 
-       <el-descriptions-item label="Business model DHS implementation">
+       <el-descriptions-item label="Business model DAS implementation">
          {{ Array.isArray(project.business_model) ? project.business_model.join(', ') : project.business_model }}
        </el-descriptions-item>
-      <el-descriptions-item label="DHS implemented in">
+      <el-descriptions-item label="DAS implemented in">
         {{ project.dhs_implemeted }}
       </el-descriptions-item>
       <el-descriptions-item label="Current status of the software">
@@ -35,31 +35,31 @@
       <el-descriptions-item label="Current version of the application">
         {{ project.current_version }}
       </el-descriptions-item>
-      <el-descriptions-item label="DHS server located">
+      <el-descriptions-item label="DAS server located">
         {{
           project.deployment_locations
             .map((deployment_location) => deployment_location.name)
             .join(", ")
         }}
       </el-descriptions-item>
-      <el-descriptions-item label="Geographic scope of the DHS">
+      <el-descriptions-item label="Geographic scope of the DAS">
         {{
           project.geographic_scopes
             .map((geographic_scope) => geographic_scope.name)
             .join(", ")
         }}
       </el-descriptions-item>
-      <el-descriptions-item label="If the scope is National, please indicate the directorates, agencies, or institutes using the DHS.">
+      <el-descriptions-item label="If the scope is National, please indicate the directorates, agencies, or institutes using the DAS.">
         {{ project.national_scopes }}
       </el-descriptions-item>
-      <el-descriptions-item label="Facility type where the DHS is implemented">
+      <el-descriptions-item label="Facility type where the DAS is implemented">
         {{ 
           project.facility_types
             .map((facility_type) => facility_type.name)
             .join(", ")            
         }}
       </el-descriptions-item>
-      <el-descriptions-item label="Targeted users of the DHS">
+      <el-descriptions-item label="Targeted users of the DAS">
         {{
           project.targeted_users
             .map((targeted_user) => targeted_user.name)

@@ -52,7 +52,7 @@
         <div class="section-title">
           <h2>Digital Agriculture Solutions</h2>
           <p class="section-subtitle">
-            Explore innovative digital health solutions transforming healthcare.
+            Explore innovative digital agriculture solutions transforming agriculture.
             <span class="total-count">({{ total }})</span>
               <el-button class="mobile-icon-button" type="primary" plain @click="$router.push('/dashboard')">
                 Analytics 
@@ -168,7 +168,7 @@
                     +{{ item.focus_areas.length - 1 }} more
                   </el-tag>
                 </div>
-                <el-tooltip v-if="item.certificates.length > 0 && item.status === 'cert competence'" content="This DHS has been certified by the MoH." placement="top"
+                <el-tooltip v-if="item.certificates.length > 0 && item.status === 'cert competence'" content="This DAS has been certified by the MoA." placement="top"
                   effect="light">
                   <div class="card-badge">
                     <img src="@/assets/home/quality.png" alt="Certified" class="qa-badge" />

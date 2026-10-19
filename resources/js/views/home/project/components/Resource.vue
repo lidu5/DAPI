@@ -1,6 +1,6 @@
 <template>
   <p>
-    Resources related to a given digital health project, which could be documentations, source codes and manuals are attached in this subsection
+    Resources related to a given digital agriculture project, which could be documentations, source codes and manuals are attached in this subsection
   </p>
   <el-form
     ref="ruleFormRef"

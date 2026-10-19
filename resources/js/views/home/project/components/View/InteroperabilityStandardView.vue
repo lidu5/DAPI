@@ -2,27 +2,24 @@
   <div class="app-container">
     <el-descriptions
       class="margin-top"
-      title="Interoperability with other systems and the supported data and messaging standards of a given digital health application are explained in this subsection."
+      title="Interoperability with other systems and the supported data and messaging standards of a given digital agriculture application are explained in this subsection."
       size="large"
       :column="1"
       border
     >
-      <el-descriptions-item label="The DHS is FHIR compliant">
-        {{ project.fhir_compliant != null ? (project.fhir_compliant == 1 ? "Yes" : "No") : "" }}
-      </el-descriptions-item>
-      <el-descriptions-item label="Data standards the DHS uses">
+      <el-descriptions-item label="Data standards the DAS uses">
         {{ project.standards.map(standard => standard.name).join(', ') }}
       </el-descriptions-item>
-      <el-descriptions-item label="API's has been developed for the DHS">
+      <el-descriptions-item label="API's has been developed for the DAS">
         {{ project.has_api_support != null ? (project.has_api_support == 1 ? 'Yes' : 'No'): "" }}
       </el-descriptions-item>
       <el-descriptions-item label="The API’s published">
         {{ project.is_api_published != null ? (project.is_api_published == 1 ? 'Yes' : 'No'): "" }}
       </el-descriptions-item>
-      <el-descriptions-item label="DHS API is Open API">
+      <el-descriptions-item label="DAS API is Open API">
         {{ project.is_openapi != null ? (project.is_openapi == 1 ? 'Yes' : 'No'): "" }}
       </el-descriptions-item>
-      <el-descriptions-item label="Data from DHS sent to MOH">
+      <el-descriptions-item label="Data from DAS sent to MOH">
         {{ project.data_is_sent_to_moh != null ? (project.data_is_sent_to_moh == 1 ? 'Yes' : 'No') : "" }}
       </el-descriptions-item>
       <el-descriptions-item 
@@ -111,7 +108,6 @@ export default {
       this.project.is_api_published = this.project.is_api_published != null ? (this.project.is_api_published == true ? 1 : 0) : null
       this.project.data_is_sent_to_moh = this.project.data_is_sent_to_moh != null ? (this.project.data_is_sent_to_moh == true ? 1 : 0) : null
       this.project.is_openapi = this.project.is_openapi != null ? (this.project.is_openapi == true ? 1 : 0) : null
-      this.project.fhir_compliant = this.project.fhir_compliant != null ? (this.project.fhir_compliant == true ? 1 : 0) : null
 
       this.dialogVisible = true;
     },

@@ -12,7 +12,7 @@
     <div class="logo-container">
       <img 
         src="@/assets/moh/moa-picture.png" 
-        alt="Digital Health Project Inventory" 
+        alt="Digital Agriculture Project Inventory" 
         class="logo-main"
       />
       <img 
@@ -51,7 +51,7 @@
     <div class="logo-container">
       <img 
         src="@/assets/moh/logo-main.png" 
-        alt="Digital Health Project Inventory" 
+        alt="Digital Agriculture Project Inventory" 
         class="logo-main"
       />
       <img 
@@ -87,7 +87,7 @@
     <div class="logo-container">
       <img 
         src="@/assets/moh/logo-main.png" 
-        alt="Digital Health Project Inventory" 
+        alt="Digital Agriculture Project Inventory" 
         class="logo-main"
       />
       <img 

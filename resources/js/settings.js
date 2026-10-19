@@ -4,7 +4,7 @@ export default {
   /**
    * @type {String}
    */
-  title: 'Digital Health Project Inventory',
+  title: 'Digital Agriculture Project Inventory',
   theme: variables.theme,
 
   /**

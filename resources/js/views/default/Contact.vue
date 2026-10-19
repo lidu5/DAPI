@@ -23,7 +23,7 @@
             <div class="contact-phone">
               <i class="bi bi-phone"></i>
               <h3>Phone Number</h3>
-              <p><a href="tel:+251 115 18 6255">+251 115 18 6255</a></p>
+              <p><a href="tel:+251 115 18 6255">++251 11646 21 99</a></p>
             </div>
           </el-col>
 
@@ -31,7 +31,7 @@
             <div class="contact-email">
               <i class="bi bi-envelope"></i>
               <h3>Email</h3>
-              <p><a href="mailto:dhpisupport@moh.gov.et">dhpisupport@moh.gov.et</a></p>
+              <p><a href="mailto:dapisupport@moa.gov.et">dapisupport@moa.gov.et</a></p>
             </div>
           </el-col>
 

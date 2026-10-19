@@ -93,7 +93,7 @@
     </el-tabs>
     <div class="cert_registration" v-if="project.status == 'request registration'" v-permission="['cert registration']">
       <el-alert type="info" title="Approval Statement for Registration" show-icon :closable="false">
-        <p>To approve the project registration, I have confirmed the DHS information is correct and appropriately set based on the pre-registration evaluation checklist.</p>
+        <p>To approve the project registration, I have confirmed the DAS information is correct and appropriately set based on the pre-registration evaluation checklist.</p>
         <el-button type="primary" @click="approveRegistration()">Approve Registration</el-button>
         <el-button type="danger" @click="decline_dialog(0)">Decline Request</el-button>
       </el-alert>      
@@ -237,103 +237,99 @@ export default {
       const message = []
 
       if(this.isEmpty(this.project.name)){
-        message.push("DHS name missing")
+        message.push("DAS name missing")
         this.valid = false
       }        
       if(this.isEmpty(this.project.organization)){
-        message.push("DHS lead organization missing")
+        message.push("DAS lead organization missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.start_date)){
-        message.push("DHS start date missing")
+        message.push("DAS start date missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.contact_name)){
-        message.push("DHS contact name missing")
+        message.push("DAS contact name missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.contact_email)){
-        message.push("DHS contact email missing")
+        message.push("DAS contact email missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.contact_phone)){
-        message.push("DHS contact phone missing")
+        message.push("DAS contact phone missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.objective)){
-        message.push("DHS objective missing")
+        message.push("DAS objective missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.budget)){
-        message.push("DHS budget missing")
+        message.push("DAS budget missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.legal_document)){
-        message.push("DHS legal document missing")
+        message.push("DAS legal document missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.license)){
-        message.push("DHS license missing")
+        message.push("DAS license missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.osi_licenses)){
-        message.push("DHS OSI approved license missing")
+        message.push("DAS OSI approved license missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.ownership_type)){
-        message.push("DHS ownership missing")
+        message.push("DAS ownership missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.applications)){
-        message.push("DHS application type missing")
+        message.push("DAS application type missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.operating_systems)){
-        message.push("DHS supported operating systems missing")
+        message.push("DAS supported operating systems missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.tech_stacks)){
-        message.push("DHS language/framework missing")
+        message.push("DAS language/framework missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.databases)){
-        message.push("DHS database missing")
+        message.push("DAS database missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.components)){
-        message.push("DHS eHA component missing")
-        this.valid = false
-      }
-      if(this.isEmpty(this.project.fhir_compliant)){
-        message.push("DHS FHIR compliant missing")
+        message.push("DAS eHA component missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.standards)){
-        message.push("DHS standards missing")
+        message.push("DAS standards missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.focus_areas)){
-        message.push("DHS health focus area(s) missing")
+        message.push("DAS health focus area(s) missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.challenges)){
-        message.push("DHS health focus area(s) missing")
+        message.push("DAS health focus area(s) missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.dhs_implemeted)){
-        message.push("DHS implemented location missing")
+        message.push("DAS implemented location missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.current_version)){
-        message.push("DHS current version missing")
+        message.push("DAS current version missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.deployment_locations)){
-        message.push("DHS deployment locations missing")
+        message.push("DAS deployment locations missing")
         this.valid = false
       }
       if (this.project.resources == undefined || !this.project.resources.some((proj) => proj.title === 'Proof of Safety')){
-        message.push("DHS proof of safety document missing")
+        message.push("DAS proof of safety document missing")
         this.valid = false
       }
 
@@ -359,7 +355,7 @@ export default {
         this.message = this.validateForRegistration()
         if (this.valid){
           ElMessageBox.confirm(
-          'Request for Registration by admiting all DHS required informations are provided!',
+          'Request for Registration by admiting all DAS required informations are provided!',
           'Request Registration',
           {
             confirmButtonText: 'Request',
@@ -495,7 +491,7 @@ export default {
               this.project.status = "cert competence";
 
               this.$message({
-                message: "DHS competence certificate has been given!",
+                message: "DAS competence certificate has been given!",
                 type: "success",
               });
             })

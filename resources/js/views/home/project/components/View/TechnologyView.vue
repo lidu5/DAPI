@@ -2,15 +2,15 @@
   <div class="app-container">
     <el-descriptions
       class="margin-top"
-      title="Technology used in the development, deployment of the digital health solution (DHS)"
+      title="Technology used in the development, deployment of the digital agriculture solution (DAS)"
       size="large"
       :column="1"
       border
     >
-      <el-descriptions-item label="Golive date of the DHS">
+      <el-descriptions-item label="Golive date of the DAS">
         {{ project.golive_date }}
       </el-descriptions-item>
-      <el-descriptions-item label="License the DHS is governed">
+      <el-descriptions-item label="License the DAS is governed">
         {{ project.license != null ? project.license.name : "" }}
       </el-descriptions-item>
       <el-descriptions-item label="OSI Approved License(s) used">
@@ -20,7 +20,7 @@
             .join(", ")
         }}
       </el-descriptions-item>
-      <el-descriptions-item label="DHS source code owner">
+      <el-descriptions-item label="DAS source code owner">
         {{
           project.ownership_type
             .map((ownership_typ) => ownership_typ.name)
@@ -31,7 +31,7 @@
           source code?">
           {{ project.owner }}
       </el-descriptions-item>
-      <el-descriptions-item label="Link to the DHS documentation">
+      <el-descriptions-item label="Link to the DAS documentation">
         <el-link type="primary" :href="project.documentation_link">{{ project.documentation_link }}</el-link>
       </el-descriptions-item>
       <el-descriptions-item label="Link to the software wiki page">
@@ -54,7 +54,7 @@
           }}
         </div>
       </el-descriptions-item>
-      <el-descriptions-item label="Operating system(s) the DHS supports">
+      <el-descriptions-item label="Operating system(s) the DAS supports">
         {{
             project.operating_systems
               .filter(operating_system => operating_system.name !== 'Other')
@@ -67,10 +67,10 @@
           }}
         </div>
       </el-descriptions-item>
-      <el-descriptions-item label=" Programming languages used for the DHS">
+      <el-descriptions-item label=" Programming languages used for the DAS">
         {{ project.languages.map((language) => language.name).join(", ") }}
       </el-descriptions-item>
-      <el-descriptions-item label="Frameworks used for the DHS">
+      <el-descriptions-item label="Frameworks used for the DAS">
         {{ project.frameworks
           .filter(framework => framework.name !== 'Other')
           .map((framework) => framework.name)
@@ -82,7 +82,7 @@
           }}
         </div>
       </el-descriptions-item>
-      <el-descriptions-item label="Database (DBMS) the DHS uses">
+      <el-descriptions-item label="Database (DBMS) the DAS uses">
         {{ project.databases
             .filter(database => database.name !== 'Other')
             .map((database) => database.name)
@@ -94,7 +94,7 @@
           }}
         </div>
       </el-descriptions-item>
-      <el-descriptions-item label="Other third-party tools the DHS depends on">
+      <el-descriptions-item label="Other third-party tools the DAS depends on">
         {{ project.third_party_tools }}
       </el-descriptions-item>
       <el-descriptions-item 

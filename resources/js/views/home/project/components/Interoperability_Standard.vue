@@ -6,12 +6,6 @@
     :label-position="'top'"
     :size="formSize"
   >
-    <el-form-item label="Is the DAS FHIR compliant?" prop="fhir_compliant">
-      <el-select v-model="project.fhir_compliant" required placeholder="please select">
-        <el-option label="Yes" :value="1" />
-        <el-option label="No" :value="0" />
-      </el-select>
-    </el-form-item>
   <el-form-item v-if="project.standards_lists" label="Which of these does your system support?" prop="standard">
       <el-row v-if="project.standards_category" v-for="category in project.standards_category">
         <el-col :span="4">
@@ -87,9 +81,6 @@ export default {
       rules: {
         standard: [
           { required: true, message: 'Please input standard', trigger: 'blur' },
-        ],
-        fhir_compliant: [
-          { required: true, message: 'Please answer FHIR compliant', trigger: 'blur' },
         ],
       }
     }

@@ -51,7 +51,7 @@
           <router-link :to="'/cert_competence/view/'+scope.row.id">
             <el-button type="default"
             >
-            {{ scope.row.status == 'request cert competence' ? 'Proceed to Cert Competence' : 'View DHS' }}
+            {{ scope.row.status == 'request cert competence' ? 'Proceed to Cert Competence' : 'View DAS' }}
             </el-button>
           </router-link>
         </template>

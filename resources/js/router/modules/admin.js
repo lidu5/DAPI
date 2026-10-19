@@ -50,9 +50,9 @@ const adminRoutes = {
       children: [
         {
           path: 'digital_health_interventions',
-          name: 'Digital Health Interventions',
+          name: 'Digital Agriculture Interventions',
           component: () => import('@/views/admin/digital_health_interventions'),
-          meta: { title: 'Digital Health Interventions', icon: 'dhi', noCache: true },
+          meta: { title: 'Digital Agriculture Interventions', icon: 'dhi', noCache: true },
         },
         {
           path: 'health_focus_areas',

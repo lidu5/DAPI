@@ -2,12 +2,12 @@
   <div class="app-container">
     <el-descriptions
       class="margin-top"
-      title="General information about the Digital Health Solution (DHS)"
+      title="General information about the Digital Agriculture Solution (DAS)"
       size="large"
       :column="1"
       border
     >
-      <el-descriptions-item label="DHS name">
+      <el-descriptions-item label="DAS name">
         {{ project.name }}
       </el-descriptions-item>
       <el-descriptions-item label="Lead organization">
@@ -16,16 +16,16 @@
       <el-descriptions-item label="Investment Partners">
         {{ project.partners.map((partner) => partner.name).join(", ") }}
       </el-descriptions-item>
-      <el-descriptions-item label="eHealth Architecture component the DHS aligns to">
+      <el-descriptions-item label="eHealth Architecture component the DAS aligns to">
         {{ project.components.map(component => component.name).join(', ') }}
       </el-descriptions-item>
-      <el-descriptions-item label="Service and Application Type the DHS aligns to">
+      <el-descriptions-item label="Service and Application Type the DAS aligns to">
         {{ project.application_types.map(application_type => application_type.name).join(', ') }}
       </el-descriptions-item>
-      <el-descriptions-item label="DHS start date">
+      <el-descriptions-item label="DAS start date">
         {{ project.start_date }}
       </el-descriptions-item>
-      <el-descriptions-item label="DHS end date">
+      <el-descriptions-item label="DAS end date">
         {{ project.end_date }}
       </el-descriptions-item>
       <el-descriptions-item label="Contact name">

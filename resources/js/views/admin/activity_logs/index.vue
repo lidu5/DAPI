@@ -27,8 +27,8 @@
           <el-option label="Delete" value="delete" />
           <el-option label="Login" value="login" />
           <el-option label="Logout" value="logout" />
-          <el-option label="DHS created" value="dhs created" />
-          <el-option label="DHS updated" value="dhs updated" />
+          <el-option label="DAS created" value="das created" />
+          <el-option label="DAS updated" value="das updated" />
           <el-option label="Resource Upload" value="resource upload" />
           <el-option label="REG Request" value="reg request" />
           <el-option label="WITHDRAW REG Request" value="withdraw reg request" />

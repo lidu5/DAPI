@@ -62,11 +62,13 @@ class ApplicationTypeController extends Controller
     
         try {
             $normalizedName = strtolower($request->input('name'));
-            $existingType = ApplicationType::whereRaw('LOWER(name) = ?', [$normalizedName])->first();
+            $existingType = ApplicationType::whereRaw('LOWER(name) = ?', [$normalizedName])
+                                           ->where('eha_component_id', $request->eha_component_id)
+                                           ->first();
     
             if ($existingType) {
                 return response()->json([
-                    'error' => 'The name you provided already exists. Please choose a different name.'
+                    'error' => 'The name you provided already exists for this EHA component. Please choose a different name.'
                 ], 409); 
             }
     
@@ -114,12 +116,13 @@ class ApplicationTypeController extends Controller
         try {
             $normalizedName = strtolower($request->input('name'));
             $existingType = ApplicationType::whereRaw('LOWER(name) = ?', [$normalizedName])
+                                           ->where('eha_component_id', $request->eha_component_id)
                                            ->where('id', '<>', $applicationType->id)
                                            ->first();
     
             if ($existingType) {
                 return response()->json([
-                    'error' => 'The name you provided already exists. Please choose a different name.'
+                    'error' => 'The name you provided already exists for this EHA component. Please choose a different name.'
                 ], 409); 
             }
     

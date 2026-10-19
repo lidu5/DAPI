@@ -14,7 +14,7 @@
         value-format="YYYY-MM-DD"
       />
     </el-form-item>
-    <el-form-item label="Under what license is the DHS governed?" prop="under_license">
+    <el-form-item label="Under what license is the DAS governed?" prop="under_license">
       <el-select v-model="project.under_license" placeholder="please select">
         <el-option v-for="license in project.licenses_lists" :key="license.id" :label="license.name" :value="license.id" />
       </el-select>
@@ -24,7 +24,7 @@
         <el-option v-for="license in project.osi_licenses_lists" :key="license.id" :label="license.name" :value="license.id" />
       </el-select>
     </el-form-item>
-    <el-form-item label="Who owns the DHS source code?"  prop="ownership">
+    <el-form-item label="Who owns the DAS source code?"  prop="ownership">
       <el-select v-model="project.ownership" placeholder="please select">
         <el-option v-for="ownership in project.ownerships_list" :key="ownership.id" :label="ownership.name" :value="ownership.id" />
       </el-select>
@@ -32,7 +32,7 @@
     <el-form-item v-if="(project.ownerships_list && project.ownership === project.ownerships_list.findIndex(owner => owner.name === 'Government') + 1) || project.owner" label="If the answer above is government, which government office owns the source code?">
       <el-input v-model="project.owner" />
     </el-form-item>
-    <el-form-item label="Link to a documentation of the DHS" prop="documentation_link">
+    <el-form-item label="Link to a documentation of the DAS" prop="documentation_link">
       <el-input v-model="project.documentation_link" type="url">
         <template #prepend>Http://</template>
       </el-input>
@@ -55,7 +55,7 @@
     <el-form-item v-if="project.application && project.application.includes(otherApplicationId)" label="If other application types, specify" prop="other_typeof_applications">
       <el-input v-model="project.other_typeof_applications"/>
     </el-form-item>
-    <el-form-item label="Indicate the operating system(s) that the DHS supports" prop="os">
+    <el-form-item label="Indicate the operating system(s) that the DAS supports" prop="os">
       <el-select v-model="project.os" multiple placeholder="please select">
         <el-option v-for="os in project.oses_lists" :key="os.id" :label="os.name" :value="os.id" />
       </el-select>
@@ -63,7 +63,7 @@
     <el-form-item v-if="(project.os && project.os.includes(otherOsId)) || project.other_operating_systems" label="If other operating systems, specify" prop="other_operating_systems">
       <el-input v-model="project.other_operating_systems"/>
     </el-form-item>
-    <el-form-item v-if="project.languages_lists" label="What are the programming languages used for the DHS?" prop="language">
+    <el-form-item v-if="project.languages_lists" label="What are the programming languages used for the DAS?" prop="language">
       <el-select v-model="project.language" filterable multiple placeholder="please select">
         <el-option v-for="language in project.languages_lists.filter((lang) => lang.type == 'Language')" :key="language.id" :label="language.name" :value="language.id" />
       </el-select>
@@ -84,7 +84,7 @@
     <el-form-item v-if="(project.db && project.db.includes(otherDbId)) || project.other_databases" label="If other databases, specify" prop="other_databases">
       <el-input v-model="project.other_databases"/>
     </el-form-item>
-    <el-form-item label="What other third-party tools the DHS depends on?" prop="third_party_tools">
+    <el-form-item label="What other third-party tools the DAS depends on?" prop="third_party_tools">
       <el-input v-model="project.third_party_tools" :rows="6" type="textarea" />
     </el-form-item>
   </el-form>
@@ -105,29 +105,29 @@ export default {
       formSize: ref('default'),
       rules: {
         under_license: [
-          { required: true, message: 'Please input DHS license', trigger: 'blur' },
+          { required: true, message: 'Please input DAS license', trigger: 'blur' },
         ],
         osi_license: [
-          { required: true, message: 'Please input DHS OSI approved license', trigger: 'blur' },
+          { required: true, message: 'Please input DAS OSI approved license', trigger: 'blur' },
         ],
         ownership: [
-          { required: true, message: 'Please specify DHS ownership', trigger: 'blur' },
+          { required: true, message: 'Please specify DAS ownership', trigger: 'blur' },
         ],
         application: [
-          { required: true, message: 'Please specify DHS application type', trigger: 'blur' },
+          { required: true, message: 'Please specify DAS application type', trigger: 'blur' },
         ],
         os : [
-          { required: true, message: 'Please specify DHS operating system', trigger: 'blur' },
+          { required: true, message: 'Please specify DAS operating system', trigger: 'blur' },
         ],
         language: [
-          { required: true, message: 'Please specify programing language the DHS uses', trigger: 'blur' },
+          { required: true, message: 'Please specify programing language the DAS uses', trigger: 'blur' },
         ],
         framework: [
-          { required: true, message: 'Please specify framework the DHS uses', trigger: 'blur' },
+          { required: true, message: 'Please specify framework the DAS uses', trigger: 'blur' },
         ],
 
         db: [
-          { required: true, message: 'Please specify database the DHS uses', trigger: 'blur' },
+          { required: true, message: 'Please specify database the DAS uses', trigger: 'blur' },
         ],
         
         otherApplicationId: null,

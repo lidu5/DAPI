@@ -51,7 +51,7 @@
           <router-link :to="'/registration/view/'+scope.row.id">
             <el-button type="default"
             >
-            {{ scope.row.status == 'request registration' || scope.row.status == 'request cert registration' ? 'Proceed to Registration Approval' : 'View DHS' }}
+            {{ scope.row.status == 'request registration' || scope.row.status == 'request cert registration' ? 'Proceed to Registration Approval' : 'View DAS' }}
           </el-button>
           </router-link>
         </template>

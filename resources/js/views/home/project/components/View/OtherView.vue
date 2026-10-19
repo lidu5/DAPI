@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-descriptions
       class="margin-top"
-      title="Interoperability with other systems and the supported data and messaging standards of a given digital health application are explained in this subsection."
+      title="Interoperability with other systems and the supported data and messaging standards of a given digital agriculture application are explained in this subsection."
       size="large"
       :column="1"
       border
@@ -18,7 +18,7 @@
       <el-descriptions-item label="Bandwidth">
         {{ project.bandwidth }}
       </el-descriptions-item>
-      <el-descriptions-item label="Maintenance and Support provider for the DHS">
+      <el-descriptions-item label="Maintenance and Support provider for the DAS">
         {{ project.supports }}
       </el-descriptions-item>
       <el-descriptions-item label="Impact evaluated">

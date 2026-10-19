@@ -1,4 +1,4 @@
-const title = 'Digital Health Project Inventory';
+const title = 'Digital Agriculture Project Inventory';
 
 export default function getPageTitle(key) {
   if (key) {

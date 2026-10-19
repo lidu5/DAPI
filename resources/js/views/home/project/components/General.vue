@@ -32,14 +32,14 @@
       </el-select>
     </el-form-item>
   
-    <el-form-item label="DHS start date" prop="start_date">
+    <el-form-item label="DAS start date" prop="start_date">
       <el-date-picker 
         v-model="project.start_date"
         format="YYYY-MM-DD"
         value-format="YYYY-MM-DD"
         />
     </el-form-item>
-    <el-form-item label="DHS end date" prop="end_date">
+    <el-form-item label="DAS end date" prop="end_date">
       <el-date-picker 
         v-model="project.end_date"
         format="YYYY-MM-DD"
@@ -54,10 +54,10 @@
     <el-form-item label="Contact phone" prop="contact_phone">
       <el-input v-model="project.contact_phone"/>
     </el-form-item>
-    <el-form-item label="What is the objective of the DHS?" prop="objective">
+    <el-form-item label="What is the objective of the DAS?" prop="objective">
       <el-input v-model="project.objective" :rows="3" type="textarea"/>
     </el-form-item>
-    <el-form-item label="Allocated budget amount for the DHS (ETB)" prop="budget">
+    <el-form-item label="Allocated budget amount for the DAS (ETB)" prop="budget">
       <el-input v-model="project.budget" type="number"/>
     </el-form-item>
 
@@ -95,7 +95,7 @@
             <span class="remove-tag" @click="removeKeyword(index)">×</span>
           </div>
         </div>
-    <el-form-item label="Please provide a narrative summary of the DHS." prop="summary">
+    <el-form-item label="Please provide a narrative summary of the DAS." prop="summary">
       <el-input v-model="project.summary" :rows="6" type="textarea"/>
     </el-form-item>
   </el-form>
@@ -118,7 +118,7 @@ export default {
       keywordList: [],
       rules: {
         name: [
-          { required: true, message: 'Please input DHS name', trigger: 'blur' },
+          { required: true, message: 'Please input DAS name', trigger: 'blur' },
         ],
         project_website_link: [
         {
@@ -131,7 +131,7 @@ export default {
           { required: true, message: 'Please input lead organization', trigger: 'blur' },
         ],
         start_date: [
-          { required: true, message: 'Please input DHS start date', trigger: 'blur' },
+          { required: true, message: 'Please input DAS start date', trigger: 'blur' },
         ],
         contact_name: [
           { required: true, message: 'Please input contact name', trigger: 'blur' },
@@ -144,7 +144,7 @@ export default {
           { required: true, message: 'Please input contact name', trigger: 'blur' },
         ],
         objective: [
-          { required: true, message: 'Please input objective of the DHS', trigger: 'blur' },
+          { required: true, message: 'Please input objective of the DAS', trigger: 'blur' },
         ],
         legal_document: [
     { required: true, message: 'Please upload legal document', trigger: 'blur' },
@@ -158,7 +158,7 @@ export default {
     },
   ],
         budget: [
-          { required: true, message: 'Please input budget of the DHS', trigger: 'blur' },
+          { required: true, message: 'Please input budget of the DAS', trigger: 'blur' },
         ],
         // Temporarily disabled validation rules
         component: [
@@ -227,7 +227,7 @@ export default {
         this.$refs.ruleFormRef.validate( (valid, fields) => {
           if (this.project.legal_document_file == undefined && this.project.legal_document === undefined){
             this.$message({
-              message: "Please upload legal document for the DHS",
+              message: "Please upload legal document for the DAS",
               type: 'error',
               duration: 5 * 1000,
             });
@@ -240,7 +240,9 @@ export default {
             data.append("id", this.project.id);
             data.append('name', this.project.name);
             data.append('lead_organization', this.project.lead_organization);
-            data.append('data_partner', this.project.partner);
+            if (this.project.partner && this.project.partner.length) {
+              data.append('data_partner', this.project.partner);
+            }
             data.append('component', this.project.component);
             data.append('application_type', this.project.application_type);
             data.append('start_date', this.project.start_date);

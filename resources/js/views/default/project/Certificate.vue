@@ -45,7 +45,7 @@
               <el-row>
                 <el-col :span="24">
                   <div class="pm-earned pm-course-title col-xs-8 text-center">
-                    <span class="pm-earned-text block sans">is duly registered on the Ministry of Health Digital Health Projects Inventory System in conformance to the minimum acceptable registration requirement. </span>
+                    <span class="pm-earned-text block sans">is duly registered on the Ministry of Agriculture Digital Agriculture Projects Inventory System in conformance to the minimum acceptable registration requirement. </span>
                   </div>
                 </el-col>
               </el-row>
@@ -116,7 +116,7 @@
                 <el-col :span="24">
                   <div class="pm-earned pm-course-title col-xs-8 text-center">
                     <span class="pm-earned-text block sans">
-                      has passed the Ministry of Health Digital Health Solution quality assurance evaluation on {{ project.published_date }} based on the quality metrics and guidelines published by the Ministry of Health. 
+                      has passed the Ministry of Agriculture Digital Agriculture Solution quality assurance evaluation on {{ project.published_date }} based on the quality metrics and guidelines published by the Ministry of Agriculture. 
                       This certification is valid until {{ new Date(new Date(project.published_date).setFullYear(new Date().getFullYear() + 2)).toDateString() }} is subject to periodic quality audits.
                     </span>
                   </div>

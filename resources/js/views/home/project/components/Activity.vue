@@ -1,5 +1,5 @@
 <template>
-  <p>Digital health interventions of the application</p>
+  <p>Digital agriculture interventions of the application</p>
   <el-form
     ref="ruleFormRef"
     :model="activity"
@@ -12,7 +12,7 @@
       <el-input v-model="activity.name" :maxlength="255" show-word-limit />
     </el-form-item>
 
-    <el-form-item label="Digital Health Interventions">
+    <el-form-item label="Digital Agriculture Interventions">
       <el-row v-if="project.interventions_type" v-for="interv_type in project.interventions_type">
         <el-col :span="4">
           <h4>{{ interv_type }}</h4>

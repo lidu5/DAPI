@@ -1,7 +1,7 @@
 <template>
     <div>
       <AdminLayout
-        entityName="Digital Health Intervention "
+        entityName="Digital Agriculture Intervention "
         :dynamicFields="itemFields"
         resourceUri= "digital-health-intervention"
       />

@@ -1,5 +1,5 @@
 <template>
-  <p>Other uncategorized questions which are very important to explain a given digital health project are sectioned in this subsection.</p>
+  <p>Other uncategorized questions which are very important to explain a given digital agriculture project are sectioned in this subsection.</p>
   <el-form
     ref="ruleFormRef"
     :model="project"

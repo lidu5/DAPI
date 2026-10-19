@@ -93,7 +93,6 @@ class DigitalHealthProjectFullResource extends JsonResource
             'api_documentation_link' => $this->api_documentation_link,
             'dhs_implemeted' => $this->dhs_implemeted,
             'national_scopes' => $this->national_scopes,
-            'fhir_compliant'=>$this->fhir_compliant,
             'osi_licenses'=>$this->osi_licenses,
             'views' => $this->views
         ];

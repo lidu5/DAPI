@@ -12,7 +12,7 @@ const projectRoute = {
         path: 'list',
         component: () => import('@/views/home/project/List'),
         name: 'List Projects',
-        meta: { title: 'Projects', icon: 'list', permissions: ['view projects'], noCache: true },
+        meta: { title: 'Projects/tools', icon: 'list', permissions: ['view projects'], noCache: true },
       },
       {
         path: 'new',

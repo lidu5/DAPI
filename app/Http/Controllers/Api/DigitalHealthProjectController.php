@@ -173,7 +173,7 @@ class DigitalHealthProjectController extends Controller
                 'activity.name.max' => 'The activity name must not exceed 255 characters.',
                 'activity.description.required_with' => 'The activity description is required when an activity is provided.',
                 'activity.description.max' => 'The activity description must not exceed 255 characters.',
-                'activity.dhi.required_with'=> 'Please select at least one Digital Health Intervention.',
+                'activity.dhi.required_with'=> 'Please select at least one Digital Agriculture Intervention.',
             ]);
 
             if(isset($params["id"]) && !empty($params["id"]) && $params["id"] != "undefined"){
@@ -225,7 +225,7 @@ class DigitalHealthProjectController extends Controller
                 }
                 $project->save();
                 ActivityLog::create([
-                    'type' => 'DHS updated',
+                    'type' => 'DAS updated',
                     'remarks' => sprintf('%s(%d) has been updated',$project->name, $project->id),
                     'model' => 'DigitalHealthProject',
                     'user' => sprintf('%s(%d)', Auth::user()->name, Auth::user()->id)
@@ -262,7 +262,7 @@ class DigitalHealthProjectController extends Controller
 
 
                 ActivityLog::create([
-                    'type' => 'DHS created',
+                    'type' => 'DAS created',
                     'remarks' => sprintf('%s(%d) has been created',$project->name, $project->id),
                     'model' => 'DigitalHealthProject',
                     'user' => sprintf('%s(%d)', Auth::user()->name, Auth::user()->id)
@@ -270,8 +270,9 @@ class DigitalHealthProjectController extends Controller
             }
 
             if(isset($params["data_partner"]) && !empty($params["data_partner"])){
+                $partnerIds = array_filter(explode(",", $params["data_partner"]), 'is_numeric');
                 $project->partners()->detach();
-                foreach(explode(",", $params["data_partner"]) as $partner){
+                foreach($partnerIds as $partner){
                     $project->partners()->attach(OrganizationUnit::find($partner));
                 }
           
@@ -396,14 +397,6 @@ class DigitalHealthProjectController extends Controller
             if(isset($params["application_type"]) && !empty($params["application_type"])){
                 $project->application_types()->detach();
                 $project->application_types()->attach(ApplicationType::find($params["application_type"]));         
-            }
-
-            if(isset($params["fhir_compliant"])){
-                if (!empty($params["fhir_compliant"])){
-                    $project->fhir_compliant = $params["fhir_compliant"];
-                } else {
-                    $project->fhir_compliant = 0;
-                }
             }
 
             if(isset($params["standard"]) && !empty($params["standard"])){
@@ -813,88 +806,85 @@ class DigitalHealthProjectController extends Controller
     
     public function request_registration(DigitalHealthProject $project){
         if(empty($project->name)){            
-        return response()->json("DHS name required for registration ", 500);
+        return response()->json("DAS name required for registration ", 500);
         }        
         if(empty($project->organization_unit)){
-        return response()->json("DHS lead organization required for registration ", 500);
+        return response()->json("DAS lead organization required for registration ", 500);
         }
         if(empty($project->start_date)){
-        return response()->json("DHS start date required for registration ", 500);
+        return response()->json("DAS start date required for registration ", 500);
         }
         if(empty($project->keywords)){
-        return response()->json("DHS keywords are required for registration ", 500);
+        return response()->json("DAS keywords are required for registration ", 500);
         }
         if(empty($project->contact_name)){
-        return response()->json("DHS contact name required for registration ", 500);
+        return response()->json("DAS contact name required for registration ", 500);
         }
         if(empty($project->contact_email)){
-        return response()->json("DHS contact email required for registration ", 500);
+        return response()->json("DAS contact email required for registration ", 500);
         }
         if(empty($project->contact_phone)){
-        return response()->json("DHS contact phone required for registration ", 500);
+        return response()->json("DAS contact phone required for registration ", 500);
         }
         if(empty($project->objective)){
-        return response()->json("DHS objective required for registration ", 500);
+        return response()->json("DAS objective required for registration ", 500);
         }
         if(empty($project->legal_document)){
-        return response()->json("DHS legal document required for registration ", 500);
+        return response()->json("DAS legal document required for registration ", 500);
         }
         if(empty($project->license)){
-        return response()->json("DHS license required for registration ", 500);
+        return response()->json("DAS license required for registration ", 500);
         }
         if(empty($project->osi_licenses)){
-        return response()->json("DHS OSI license required for registration ", 500);
+        return response()->json("DAS OSI license required for registration ", 500);
         }
         if(empty($project->ownership_type)){
-        return response()->json("DHS ownership required for registration ", 500);
+        return response()->json("DAS ownership required for registration ", 500);
         }
         if(empty($project->applications)){
-        return response()->json("DHS application type required for registration ", 500);
+        return response()->json("DAS application type required for registration ", 500);
         }
         if(empty($project->operating_systems)){
-        return response()->json("DHS operating system required for registration ", 500);
+        return response()->json("DAS operating system required for registration ", 500);
         }
         if(empty($project->tech_stacks)){
-        return response()->json("DHS programming language/framework required for registration ", 500);
+        return response()->json("DAS programming language/framework required for registration ", 500);
         }
         if(empty($project->databases)){
-        return response()->json("DHS database required for registration ", 500);
+        return response()->json("DAS database required for registration ", 500);
         }
         if(empty($project->components)){
-        return response()->json("DHS eHA component required for registration ", 500);
+        return response()->json("DAS eHA component required for registration ", 500);
         }
         if(empty($project->application_types)){
-        return response()->json("DHS application type required for registration ", 500);
-        }
-        if($project->fhir_compliant != 0 && $project->fhir_compliant != 1){
-        return response()->json("DHS FHIR compliant required for registration ", 500);
+        return response()->json("DAS application type required for registration ", 500);
         }
         if(empty($project->standards)){
-        return response()->json("DHS standards required for registration ", 500);
+        return response()->json("DAS standards required for registration ", 500);
         }
         if(empty($project->focus_areas)){
-        return response()->json("DHS focus areas required for registration ", 500);
+        return response()->json("DAS focus areas required for registration ", 500);
         }
         if(empty($project->category_of_evidence)){
-            return response()->json("DHS category of evidence required for registration ", 500);
+            return response()->json("DAS category of evidence required for registration ", 500);
         }
         if(empty($project->funding_sources)){
-        return response()->json("DHS funding sources required for registration ", 500);
+        return response()->json("DAS funding sources required for registration ", 500);
         }
         if(empty($project->challenges)){
-        return response()->json("DHS challenges required for registration ", 500);
+        return response()->json("DAS challenges required for registration ", 500);
         }
         if(empty($project->dhs_implemeted)){
-        return response()->json("DHS implemented location required for registration ", 500);
+        return response()->json("DAS implemented location required for registration ", 500);
         }
         if(empty($project->current_version)){
-        return response()->json("DHS current version required for registration ", 500);
+        return response()->json("DAS current version required for registration ", 500);
         }
         if(empty($project->deployment_locations)){
-        return response()->json("DHS deployment location required for registration ", 500);
+        return response()->json("DAS deployment location required for registration ", 500);
         }
         if(empty($project->resources)){
-        return response()->json("DHS proof of safety document required for registration ", 500);
+        return response()->json("DAS proof of safety document required for registration ", 500);
         }
         $project->status = static::REQUEST_REGISTRATION;
         $project->save();
@@ -996,7 +986,7 @@ class DigitalHealthProjectController extends Controller
 
         ActivityLog::create([
             'type' => 'Type Remove',
-            'remarks' => sprintf('%s is removed for %s(%d) DHS.',$request->type, $project->name, $project->id),
+            'remarks' => sprintf('%s is removed for %s(%d) DAS.',$request->type, $project->name, $project->id),
             'model' => 'DigitalHealthProject',
             'user' => sprintf('%s(%d)', Auth::user()->name, Auth::user()->id)
         ]);

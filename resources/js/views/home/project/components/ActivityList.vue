@@ -12,7 +12,7 @@
       </template>
     </el-table-column>
 
-    <el-table-column align="center" label="Digital Health Intervention">
+    <el-table-column align="center" label="Digital Agriculture Intervention">
       <template #default="scope">
         <el-popover effect="light" trigger="hover" placement="top" width="auto">
           <template #default>

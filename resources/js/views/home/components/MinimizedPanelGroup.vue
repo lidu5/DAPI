@@ -7,7 +7,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              New DHS
+              New DAS
             </div>
             <count-to :start-val="0" :end-val="new_projects || 0" :duration="2600" class="card-panel-num" />
           </div>
@@ -20,7 +20,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              Registered DHS
+              Registered DAS
             </div>
             <count-to :start-val="0" :end-val="cert_reg || 0" :duration="3200" class="card-panel-num" />
           </div>
@@ -33,7 +33,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              Certified DHS
+              Certified DAS
             </div>
             <count-to :start-val="0" :end-val="cert_comp || 0" :duration="3600" class="card-panel-num" />
           </div>
