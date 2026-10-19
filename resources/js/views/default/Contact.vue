@@ -15,7 +15,7 @@
             <div class="contact-address">
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
-              <address>1234 Sudan Streat, Addis Ababa, Ethiopia</address>
+              <address>1Addis Ababa (Headquarters), Gurd Shola (Near to Century Mall) on the way to Egzher Ab, Addis Ababa.</address>
             </div>
           </el-col>
 
