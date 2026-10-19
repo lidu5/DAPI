@@ -15,7 +15,7 @@
             <div class="contact-address">
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
-              <address>1Addis Ababa (Headquarters), Gurd Shola (Near to Century Mall) on the way to Egzher Ab, Addis Ababa.</address>
+              <address>Addis Ababa (Headquarters), Gurd Shola (Near to Century Mall) on the way to Egzher Ab, Addis Ababa.</address>
             </div>
           </el-col>
 
@@ -23,7 +23,7 @@
             <div class="contact-phone">
               <i class="bi bi-phone"></i>
               <h3>Phone Number</h3>
-              <p><a href="tel:+251 115 18 6255">++251 11646 21 99</a></p>
+              <p><a href="tel:+251 11646 21 99">+251 11646 21 99</a></p>
             </div>
           </el-col>
 
