@@ -3,7 +3,7 @@ import '@/bootstrap';
 
 // Create axios instance
 const service = window.axios.create({
-  baseURL: process.env.MIX_BASE_API,
+  baseURL: process.env.MIX_BASE_API || '/api',
   timeout: 10000, // Request timeout
 });
 
