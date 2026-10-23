@@ -59,7 +59,7 @@ export default {
       const { data } = await getDataRoute.list({});
       this.chart.setOption({
         title: {
-          text: 'Number of Projects in Coverage Area',
+          text: 'Number of systems in Coverage Area',
           left: 'center',
           textStyle: {
             color: '#000000',

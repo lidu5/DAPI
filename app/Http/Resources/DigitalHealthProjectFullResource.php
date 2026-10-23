@@ -53,6 +53,8 @@ class DigitalHealthProjectFullResource extends JsonResource
             'implementing_partners' => $this->implementing_partners,
             'moh_contribution' => $this->moh_contribution,
             'project_website_link' => $this->project_website_link,
+            'local_ip' => $this->local_ip,
+            'public_ip' => $this->public_ip,
             'business_model' => $this->business_model,
             'funding_sources' => $this->funding_sources,
             'keywords' => $this->keywords,

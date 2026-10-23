@@ -16,7 +16,7 @@
     name: 'Hero',
     data() {
       return {
-        title: 'Digital Agriculture Project Inventory',
+        title: 'Digital Agriculture Systems Inventory',
         subtitle: 'A digital clearinghouse and certification platform.',
         imageSrc: require('@/assets/home/Digiculture_monitor_mockup.png')
       };

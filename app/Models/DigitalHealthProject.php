@@ -16,7 +16,7 @@ class DigitalHealthProject extends Model
      *
      * @var array
      */
-    protected $fillable =['uuid', 'name', 'start_date', 'contact_name', 'contact_email', 'contact_phone', 'budget', 'objective', 'legal_document', 'organization_unit_id', 'user_id', 'is_registered', 'keywords', 'project_website_link', 'category_of_evidence', 'publications', 'funding_sources', 'business_model', 'key_challenges_recommendations', 'views'
+    protected $fillable =['uuid', 'name', 'start_date', 'contact_name', 'contact_email', 'contact_phone', 'budget', 'objective', 'legal_document', 'organization_unit_id', 'user_id', 'is_registered', 'keywords', 'project_website_link', 'category_of_evidence', 'publications', 'funding_sources', 'business_model', 'key_challenges_recommendations', 'views', 'local_ip', 'public_ip'
     ];
 
     public function organization_unit(){

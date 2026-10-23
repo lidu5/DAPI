@@ -1,7 +1,7 @@
 <template>
     <div>
       <AdminLayout
-        entityName="Health Professional Group"
+        entityName="Agriculture Professional Group"
         :dynamicFields="groupFields"
         resourceUri="health-professional-groups"
       />

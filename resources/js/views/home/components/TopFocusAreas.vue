@@ -62,7 +62,7 @@ export default {
 
         this.chart.setOption({
           title: {
-            text: 'Top 5 Health Focus Areas',
+            text: 'Top 5 Focus Areas',
             left: 'center',
             textStyle: {
               color: '#000000',

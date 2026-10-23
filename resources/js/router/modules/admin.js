@@ -41,11 +41,11 @@ const adminRoutes = {
       ]
     },
 
-    // **Health Systems**
+    // **Agriculture Systems**
     {
       path: 'health-systems',
-      name: 'Health Systems',
-      meta: { title: 'Health Systems', icon: 'star', noCache: true },
+      name: 'Agriculture Systems',
+      meta: { title: 'Agriculture Systems', icon: 'star', noCache: true },
       redirect: '/admin/health-systems/digital_health_interventions',
       children: [
         {
@@ -56,33 +56,34 @@ const adminRoutes = {
         },
         {
           path: 'health_focus_areas',
-          name: 'Health Focus Areas',
+          name: 'Agriculture Focus Areas',
           component: () => import('@/views/admin/health_focus_areas'),
-          meta: { title: 'Health Focus Areas', icon: 'list', noCache: true },
+          meta: { title: 'Agriculture Focus Areas', icon: 'list', noCache: true },
         },
         {
           path: 'health_professionals',
-          name: 'Health Professionals',
+          name: 'Agriculture Professional Groups',
           component: () => import('@/views/admin/health_professional_groups'),
-          meta: { title: 'Health Professionals', icon: 'coordinate', noCache: true },
+          meta: { title: 'Agriculture Professional Groups', icon: 'coordinate', noCache: true },
         },
         {
           path: 'health_system_challenges',
-          name: 'Health System Challenges',
+          name: 'Agriculture System Challenges',
           component: () => import('@/views/admin/health_system_challenges'),
-          meta: { title: 'Health System Challenges', icon: 'dataline', noCache: true },
+          meta: { title: 'Agriculture System Challenges', icon: 'dataline', noCache: true },
         },
-        {
-          path: 'facility_types',
-          name: 'Facility Types',
-          component: () => import('@/views/admin/facility_types'),
-          meta: { title: 'Facility Types', icon: 'facility', noCache: true },
-        },
+        // Facility Types temporarily hidden
+        // {
+        //   path: 'facility_types',
+        //   name: 'Facility Types',
+        //   component: () => import('@/views/admin/facility_types'),
+        //   meta: { title: 'Facility Types', icon: 'facility', noCache: true },
+        // },
         {
           path: 'eha_components',
-          name: 'EHA Components',
+          name: 'Agriculture System Scope',
           component: () => import('@/views/admin/eha_components'),
-          meta: { title: 'EHA Components', icon: 'components', noCache: true },
+          meta: { title: 'Agriculture System Scope', icon: 'components', noCache: true },
         },
         {
           path: 'application_types',

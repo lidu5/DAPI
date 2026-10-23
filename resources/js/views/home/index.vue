@@ -32,11 +32,12 @@
           <top-focus-areas/>
         </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="24" :lg="12">
+      <!-- Projects by Digital Agriculture Interventions chart temporarily hidden -->
+      <!-- <el-col :xs="24" :sm="24" :md="24" :lg="12">
         <div class="chart-wrapper">
           <projects-by-DHI />
         </div>
-      </el-col>
+      </el-col> -->
     </el-row>
     <el-row>
       <el-col :xs="24" :sm="24" :md="24" :lg="12">

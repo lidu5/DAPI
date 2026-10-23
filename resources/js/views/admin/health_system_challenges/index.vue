@@ -1,7 +1,7 @@
 <template>
     <div>
       <AdminLayout
-        entityName="Health System Challenge"
+        entityName="Agriculture System Challenge"
         :dynamicFields="challengeFields"
         resourceUri="health-system-challenges"
       />

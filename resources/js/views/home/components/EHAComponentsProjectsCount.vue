@@ -60,7 +60,7 @@ export default {
 
       this.chart.setOption({
         title: {
-          text: 'Projects By eHA Components',
+          text: 'systems By Scope',
           left: 'center',
           textStyle: {
             color: '#000000',

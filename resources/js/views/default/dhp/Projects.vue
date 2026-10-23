@@ -9,7 +9,7 @@
           </el-icon>
           Filter By:
         </h4>        
-        <el-select v-model="query.component" clearable filterable @change="handleFilter" multiple placeholder="e-Health Component" class="filter-select" size="large"
+        <el-select v-model="query.component" clearable filterable @change="handleFilter" multiple placeholder="Agriculture System Scope" class="filter-select" size="large"
           style="width: 220px">
           <el-option v-for="component in search_data.components" :key="component.id" :label="component.name" :value="component.id" class="filter-option" />
         </el-select>
@@ -18,7 +18,7 @@
           <el-option v-for="application_type in search_data.application_types" :key="application_type.id" :label="application_type.name" :value="application_type.id"
             class="filter-option" />
         </el-select>
-        <el-select v-model="query.focus_area" clearable filterable @change="handleFilter" multiple placeholder="Health Focus Area" class="filter-select" size="large"
+        <el-select v-model="query.focus_area" clearable filterable @change="handleFilter" multiple placeholder="Agriculture Focus Area" class="filter-select" size="large"
           style="width: 220px">
           <el-option v-for="focus_area in search_data.focus_areas" :key="focus_area.id" :label="focus_area.name" :value="focus_area.id" class="filter-option" />
         </el-select>
@@ -26,7 +26,7 @@
           style="width: 220px">
           <el-option v-for="region in search_data.regions" :key="region.id" :label="region.name" :value="region.id" class="filter-option" />
         </el-select>
-        <el-select v-model="query.challenge" clearable filterable @change="handleFilter" multiple placeholder="Health System Challenge" class="filter-select" size="large"
+        <el-select v-model="query.challenge" clearable filterable @change="handleFilter" multiple placeholder="Agriculture System Challenge" class="filter-select" size="large"
           style="width: 220px">
           <el-option v-for="challenge in search_data.challenges" :key="challenge.id" :label="challenge.name" :value="challenge.id" class="filter-option" />
         </el-select>
@@ -99,7 +99,7 @@
                   </el-icon>
                 </el-button>
               </div>
-              <el-select v-model="query.component" clearable filterable @change="handleFilter" multiple placeholder="e-Health Component" class="filter-select"
+              <el-select v-model="query.component" clearable filterable @change="handleFilter" multiple placeholder="Agriculture System Scope" class="filter-select"
                 size="large">
                 <el-option v-for="component in search_data.components" :key="component.id" :label="component.name" :value="component.id" class="filter-option" />
               </el-select>
@@ -108,14 +108,14 @@
                 <el-option v-for="application_type in search_data.application_types" :key="application_type.id" :label="application_type.name" :value="application_type.id"
                   class="filter-option" />
               </el-select>
-              <el-select v-model="query.focus_area" clearable filterable @change="handleFilter" multiple placeholder="Health Focus Area" class="filter-select"
+              <el-select v-model="query.focus_area" clearable filterable @change="handleFilter" multiple placeholder="Agriculture Focus Area" class="filter-select"
                 size="large">
                 <el-option v-for="focus_area in search_data.focus_areas" :key="focus_area.id" :label="focus_area.name" :value="focus_area.id" class="filter-option" />
               </el-select>
               <el-select v-model="query.region" clearable filterable @change="handleFilter" multiple placeholder="Coverage" class="filter-select" size="large">
                 <el-option v-for="region in search_data.regions" :key="region.id" :label="region.name" :value="region.id" class="filter-option" />
               </el-select>
-              <el-select v-model="query.challenge" clearable filterable @change="handleFilter" multiple placeholder="Health System Challenge" class="filter-select"
+              <el-select v-model="query.challenge" clearable filterable @change="handleFilter" multiple placeholder="Agriculture System Challenge" class="filter-select"
                 size="large">
                 <el-option v-for="challenge in search_data.challenges" :key="challenge.id" :label="challenge.name" :value="challenge.id" class="filter-option" />
               </el-select>

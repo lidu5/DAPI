@@ -16,7 +16,7 @@
       <el-descriptions-item label="Investment Partners">
         {{ project.partners.map((partner) => partner.name).join(", ") }}
       </el-descriptions-item>
-      <el-descriptions-item label="eHealth Architecture component the DAS aligns to">
+      <el-descriptions-item label="Scope of Agriculture system">
         {{ project.components.map(component => component.name).join(', ') }}
       </el-descriptions-item>
       <el-descriptions-item label="Service and Application Type the DAS aligns to">
@@ -67,6 +67,12 @@
       </el-descriptions-item>
       <el-descriptions-item label="Project Website Link">
          <el-link type="primary" :href="project.project_website_link" target="_blank">{{ project.project_website_link }}</el-link>
+      </el-descriptions-item>
+      <el-descriptions-item label="Local IP Address">
+        {{ project.local_ip }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Public IP Address">
+        {{ project.public_ip }}
       </el-descriptions-item>
       <el-descriptions-item label="Keywords">
         <span v-if="project.keywords">
@@ -232,6 +238,12 @@ export default {
         }
         if(response.project_website_link){
           this.project.project_website_link = response.project_website_link
+        }
+        if(response.local_ip){
+          this.project.local_ip = response.local_ip
+        }
+        if(response.public_ip){
+          this.project.public_ip = response.public_ip
         }
         if(response.keywords){
           this.project.keywords = response.keywords

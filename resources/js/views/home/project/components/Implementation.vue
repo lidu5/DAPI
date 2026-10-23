@@ -7,12 +7,12 @@
     class="demo-ruleForm"
     :size="formSize"
   >
-    <el-form-item label="Where in the value chain does it operate?" prop="focus_area">
+    <el-form-item label="What kinds of data does the system hold?" prop="focus_area">
       <el-select v-model="project.focus_area" filterable multiple placeholder="please select">
         <el-option v-for="focus_area in project.focus_areas_lists" :key="focus_area.id" :label="focus_area.name" :value="focus_area.id" />
       </el-select>
     </el-form-item>
-    <el-form-item label="What are the Health System Challenges addressed by the DAS?" prop="challenge">
+    <el-form-item label="What are the Agriculture System Challenges addressed by the DAS?" prop="challenge">
       <el-select v-model="project.challenge" filterable multiple placeholder="please select">
         <el-option v-for="challenge in project.challenges_lists" :key="challenge.id" :label="challenge.name" :value="challenge.id" />
       </el-select>
@@ -147,7 +147,7 @@ export default {
 
       rules: {
         focus_area: [
-          { required: true, message: 'Please input health focus area', trigger: 'blur' },
+          { required: true, message: 'Please input agriculture focus area', trigger: 'blur' },
         ],
         challenge: [
           { required: true, message: 'Please input component', trigger: 'blur' },

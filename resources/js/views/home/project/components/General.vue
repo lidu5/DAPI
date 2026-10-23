@@ -80,6 +80,12 @@
       <el-form-item label="Project Website Link" prop="project_website_link">
         <el-input v-model="project.project_website_link" type="url"clearable/>
       </el-form-item>
+      <el-form-item label="Local IP Address" prop="local_ip">
+        <el-input v-model="project.local_ip" placeholder="e.g. 10.10.20.103" clearable/>
+      </el-form-item>
+      <el-form-item label="Public IP Address" prop="public_ip">
+        <el-input v-model="project.public_ip" placeholder="e.g. 196.189.240.50" clearable/>
+      </el-form-item>
       <el-form-item label="Keywords" prop="keywords">
         <el-input
           v-model="newKeyword"
@@ -127,6 +133,12 @@ export default {
       trigger: 'blur'
          }
   ],
+        local_ip: [
+          { pattern: /^(\d{1,3}\.){3}\d{1,3}$/, message: 'Please enter a valid IP address', trigger: 'blur' },
+        ],
+        public_ip: [
+          { pattern: /^(\d{1,3}\.){3}\d{1,3}$/, message: 'Please enter a valid IP address', trigger: 'blur' },
+        ],
         lead_organization: [
           { required: true, message: 'Please input lead organization', trigger: 'blur' },
         ],
@@ -257,6 +269,12 @@ export default {
             }  
              if (this.project.project_website_link) {
               data.append('project_website_link', this.project.project_website_link);
+            }
+            if (this.project.local_ip) {
+              data.append('local_ip', this.project.local_ip);
+            }
+            if (this.project.public_ip) {
+              data.append('public_ip', this.project.public_ip);
             }  
             if (this.project.summary) {
               data.append('summary', this.project.summary);

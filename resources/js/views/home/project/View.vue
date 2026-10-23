@@ -81,9 +81,10 @@
       <el-tab-pane label="Coverages" name="Coverages">
         <CoverageView :coverages="project.coverages" :id="project.id" :user_id="project.user_id" :edit="true"/>
       </el-tab-pane>
-      <el-tab-pane label="Activities" name="Activities">
+      <!-- Activities tab temporarily hidden -->
+      <!-- <el-tab-pane label="Activities" name="Activities">
         <ActivityView :activities="project.activities" :id="project.id" :user_id="project.user_id" :edit="true"/>
-      </el-tab-pane>
+      </el-tab-pane> -->
       <el-tab-pane label="Resources" name="Resources">
         <ResourceView :resources="project.resources" :id="project.id" :user_id="project.user_id" :status="project.status" :edit="true"/>
       </el-tab-pane>
@@ -301,7 +302,7 @@ export default {
         this.valid = false
       }
       if(this.isEmpty(this.project.components)){
-        message.push("DAS eHA component missing")
+        message.push("DAS scope of agriculture system missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.standards)){
@@ -309,11 +310,11 @@ export default {
         this.valid = false
       }
       if(this.isEmpty(this.project.focus_areas)){
-        message.push("DAS health focus area(s) missing")
+        message.push("DAS agriculture focus area(s) missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.challenges)){
-        message.push("DAS health focus area(s) missing")
+        message.push("DAS agriculture system challenge(s) missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.dhs_implemeted)){

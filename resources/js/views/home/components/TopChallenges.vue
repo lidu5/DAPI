@@ -62,7 +62,7 @@ export default {
 
         this.chart.setOption({
           title: {
-            text: 'Top 5 Health System Challenges',
+            text: 'Top 5 Agriculture System Challenges',
             left: 'center',
             textStyle: {
               color: '#000000',

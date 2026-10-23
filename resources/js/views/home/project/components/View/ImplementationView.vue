@@ -7,10 +7,10 @@
       :column="1"
       border
     >
-      <el-descriptions-item label="Health focus area(s) addressed by the DAS">
+      <el-descriptions-item label="Agriculture focus area(s) addressed by the DAS">
         {{ project.focus_areas.map((focus_area) => focus_area.name).join(", ") }}
       </el-descriptions-item>
-      <el-descriptions-item label="Health system challenges addressed by the DAS">
+      <el-descriptions-item label="Agriculture system challenges addressed by the DAS">
         {{ project.challenges.map((challenge) => challenge.name).join(", ") }}
       </el-descriptions-item>
       <el-descriptions-item label="MoH contribution to this DAS implementation">
@@ -52,13 +52,14 @@
       <el-descriptions-item label="If the scope is National, please indicate the directorates, agencies, or institutes using the DAS.">
         {{ project.national_scopes }}
       </el-descriptions-item>
-      <el-descriptions-item label="Facility type where the DAS is implemented">
-        {{ 
+      <!-- Facility type field temporarily hidden -->
+      <!-- <el-descriptions-item label="Facility type where the DAS is implemented">
+        {{
           project.facility_types
             .map((facility_type) => facility_type.name)
-            .join(", ")            
+            .join(", ")
         }}
-      </el-descriptions-item>
+      </el-descriptions-item> -->
       <el-descriptions-item label="Targeted users of the DAS">
         {{
           project.targeted_users

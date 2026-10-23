@@ -1,7 +1,7 @@
 <template>
     <div>
       <AdminLayout
-        entityName="E-heath Architecture Components "
+        entityName="Agriculture System Scope"
         :dynamicFields="itemFields"
         resourceUri= "eha-component"
       />

@@ -1,7 +1,7 @@
 <template>
     <div>
       <AdminLayout
-        entityName="Health Focus Area"
+        entityName="Agriculture Focus Area"
         :dynamicFields="itemFields"
         resourceUri= "health-focus-area"
       />

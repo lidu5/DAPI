@@ -290,6 +290,14 @@ class DigitalHealthProjectController extends Controller
                 $project->project_website_link = $params["project_website_link"];
             }
 
+            if(isset($params["local_ip"])){
+                $project->local_ip = $params["local_ip"];
+            }
+
+            if(isset($params["public_ip"])){
+                $project->public_ip = $params["public_ip"];
+            }
+
             if(isset($params["end_date"]) && !empty($params["end_date"]) && (bool)strtotime($params["end_date"])){                
                 $project->end_date = $params["end_date"];
             }

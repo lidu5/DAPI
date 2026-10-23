@@ -33,9 +33,10 @@
                 <div class="stepper-pane" v-if="step == sleepers.indexOf('Coverages') + 1">
                   <Coverage :project="project" ref="Coverages" />
                 </div>
-                <div class="stepper-pane" v-if="step == sleepers.indexOf('Activities') + 1">
+                <!-- Activity step temporarily hidden -->
+                <!-- <div class="stepper-pane" v-if="step == sleepers.indexOf('Activities') + 1">
                   <Activity :project="project" ref="Activities" />
-                </div>
+                </div> -->
                 <div class="stepper-pane" v-if="step == sleepers.indexOf('Resources') + 1">
                   <Resource :project="project" ref="Resources" />
                 </div>
@@ -65,7 +66,7 @@ import Resource from "./components/Resource.vue";
   export default {
     data() {
       return {
-        sleepers: [ 'General', 'Technologies', 'Interoperability and Standards', 'Implementations', 'Coverages', 'Activities', 'Resources', 'Others'],
+        sleepers: [ 'General', 'Technologies', 'Interoperability and Standards', 'Implementations', 'Coverages', 'Resources', 'Others'], // 'Activities' temporarily hidden
         step: 1,
         project: {
         },
