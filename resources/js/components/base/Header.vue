@@ -104,7 +104,7 @@
         <el-menu-item index="/about" @click="goMenu('/about')">About DHPI</el-menu-item>
         <el-menu-item index="/dhp" @click="goMenu('/dhp')">About eHA</el-menu-item>
       </el-sub-menu>
-      <el-menu-item index="/projects/explore" @click="goMenu('/projects/explore')">Projects</el-menu-item>
+      <el-menu-item index="/projects/explore" @click="goMenu('/projects/explore')">Tools</el-menu-item>
       <el-menu-item index="/dashboard" @click="goMenu('/dashboard')">Analytics</el-menu-item>
       <el-menu-item index="/resources" @click="goMenu('/resources')">Resources</el-menu-item>
       <el-menu-item index="/contact" @click="goMenu('/contact')">Contact Us</el-menu-item>    
