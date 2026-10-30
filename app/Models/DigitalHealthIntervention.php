@@ -14,8 +14,9 @@ class DigitalHealthIntervention extends Model
         'category',
     ];
 
-    const TYPE_PERSON = 'PERSON';
-    const TYPE_HEALTHCARE_PROVIDERS = 'HEALTHCARE PROVIDERS';
-    const TYPE_HEALTH_MANAGEMENT_AND_SUPPORT_PERSONNEL = 'HEALTH MANAGEMENT AND SUPPORT PERSONNEL';
-    const TYPE_DATA_SERVICES = 'DATA SERVICES';
+    const TYPE_PERSON = 'Digital system';
+    const TYPE_HEALTHCARE_PROVIDERS = 'Data service';
+    const TYPE_HEALTH_MANAGEMENT_AND_SUPPORT_PERSONNEL = 'Delivery channel';
+    const TYPE_DATA_SERVICES = 'Equipment';
+    const TYPE_PROGRAMME = 'Programme';
 }

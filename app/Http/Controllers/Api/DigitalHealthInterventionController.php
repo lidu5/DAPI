@@ -36,6 +36,7 @@ class DigitalHealthInterventionController extends Controller
             DigitalHealthIntervention::TYPE_HEALTHCARE_PROVIDERS,
             DigitalHealthIntervention::TYPE_HEALTH_MANAGEMENT_AND_SUPPORT_PERSONNEL,
             DigitalHealthIntervention::TYPE_DATA_SERVICES,
+            DigitalHealthIntervention::TYPE_PROGRAMME,
         ])) {
             $query->where('type', $request->type);
         }
@@ -70,7 +71,7 @@ class DigitalHealthInterventionController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
-            'type' => 'required|string|in:' . DigitalHealthIntervention::TYPE_PERSON . ',' . DigitalHealthIntervention::TYPE_HEALTHCARE_PROVIDERS . ',' . DigitalHealthIntervention::TYPE_HEALTH_MANAGEMENT_AND_SUPPORT_PERSONNEL . ',' . DigitalHealthIntervention::TYPE_DATA_SERVICES,
+            'type' => 'required|string|in:' . DigitalHealthIntervention::TYPE_PERSON . ',' . DigitalHealthIntervention::TYPE_HEALTHCARE_PROVIDERS . ',' . DigitalHealthIntervention::TYPE_HEALTH_MANAGEMENT_AND_SUPPORT_PERSONNEL . ',' . DigitalHealthIntervention::TYPE_DATA_SERVICES . ',' . DigitalHealthIntervention::TYPE_PROGRAMME,
         ];
     
         $validator = Validator::make($request->all(), $rules);
@@ -132,7 +133,7 @@ class DigitalHealthInterventionController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
-            'type' => 'required|string|in:' . DigitalHealthIntervention::TYPE_PERSON . ',' . DigitalHealthIntervention::TYPE_HEALTHCARE_PROVIDERS . ',' . DigitalHealthIntervention::TYPE_HEALTH_MANAGEMENT_AND_SUPPORT_PERSONNEL . ',' . DigitalHealthIntervention::TYPE_DATA_SERVICES,
+            'type' => 'required|string|in:' . DigitalHealthIntervention::TYPE_PERSON . ',' . DigitalHealthIntervention::TYPE_HEALTHCARE_PROVIDERS . ',' . DigitalHealthIntervention::TYPE_HEALTH_MANAGEMENT_AND_SUPPORT_PERSONNEL . ',' . DigitalHealthIntervention::TYPE_DATA_SERVICES . ',' . DigitalHealthIntervention::TYPE_PROGRAMME,
         ];
     
         $validator = Validator::make($request->all(), $rules);
