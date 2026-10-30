@@ -158,17 +158,7 @@ export default {
         objective: [
           { required: true, message: 'Please input objective of the DAS', trigger: 'blur' },
         ],
-        legal_document: [
-    { required: true, message: 'Please upload legal document', trigger: 'blur' },
-    { validator: (rule, value, callback) => {
-        if (!this.project.legal_document_file && !this.project.legal_document) {
-          callback(new Error('Please upload a legal document'));
-        } else {
-          callback();
-        }
-      }, trigger: 'blur'
-    },
-  ],
+        legal_document: [],
         budget: [
           { required: true, message: 'Please input budget of the DAS', trigger: 'blur' },
         ],
@@ -237,16 +227,6 @@ export default {
     async validate(){
       return new Promise((resolve, reject) => {
         this.$refs.ruleFormRef.validate( (valid, fields) => {
-          if (this.project.legal_document_file == undefined && this.project.legal_document === undefined){
-            this.$message({
-              message: "Please upload legal document for the DAS",
-              type: 'error',
-              duration: 5 * 1000,
-            });
-            reject(false);
-            return
-          }
-          
           if (valid) {
             const data = new FormData();
             data.append("id", this.project.id);

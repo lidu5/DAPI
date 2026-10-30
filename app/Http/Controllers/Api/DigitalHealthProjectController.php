@@ -236,13 +236,12 @@ class DigitalHealthProjectController extends Controller
                     return response()->json($params['name']." already exists. Please use another name or edit from the Project section.", 500);
                 }
 
-                if(!isset($params["data_legal_document_file"])){
-                    return response()->json("Document file required", 500);
-                }               
-                
-                $fileName = $this->uploadLegalDocument($params['data_legal_document_file']);
-                if ($fileName == null){
-                    return response()->json("Uploading legal document error. Please contact Administrator or try later!", 500);
+                $fileName = null;
+                if(isset($params["data_legal_document_file"])){
+                    $fileName = $this->uploadLegalDocument($params['data_legal_document_file']);
+                    if ($fileName == null){
+                        return response()->json("Uploading legal document error. Please contact Administrator or try later!", 500);
+                    }
                 }
 
                 $project = DigitalHealthProject::create([
@@ -836,9 +835,6 @@ class DigitalHealthProjectController extends Controller
         }
         if(empty($project->objective)){
         return response()->json("DAS objective required for registration ", 500);
-        }
-        if(empty($project->legal_document)){
-        return response()->json("DAS legal document required for registration ", 500);
         }
         if(empty($project->license)){
         return response()->json("DAS license required for registration ", 500);

@@ -22,7 +22,7 @@
         <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
 
-        <title>Digital Agriculture Project Inventory</title>        
+        <title>Digital Agriculture System Inventory</title>        
     </head>
     <body>
         <div id="app"></div>

@@ -174,6 +174,11 @@
                     <img src="@/assets/home/quality.png" alt="Certified" class="qa-badge" />
                   </div>
                 </el-tooltip>
+                <el-tooltip v-if="!item.legal_document" content="Legal doc remaining" placement="top" effect="dark">
+                  <div class="card-warning-badge">
+                    <el-icon style="color:#e6a23c;font-size:22px;"><Warning /></el-icon>
+                  </div>
+                </el-tooltip>
               </div>
               <div class="card-header">
                 <h3>{{ item.name }}</h3>
@@ -208,7 +213,7 @@
 import Pagination from '@/components/Pagination';
 import Resource from '@/api/resource';
 import { ElIcon } from 'element-plus';
-import { Filter, Search, Close, Grid, Tickets, OfficeBuilding, CollectionTag, CloseBold, Sort, DataAnalysis } from '@element-plus/icons-vue';
+import { Filter, Search, Close, Grid, Tickets, OfficeBuilding, CollectionTag, CloseBold, Sort, DataAnalysis, Warning } from '@element-plus/icons-vue';
 import image1 from '@/assets/project-images/image1.jpg';
 import image4 from '@/assets/project-images/image4.jpg';
 
@@ -217,7 +222,7 @@ const projectSearchData = new Resource('projects/search-data');
 
 export default {
   name: 'Resource List',
-  components: { Pagination, ElIcon, Filter, Search, Close, Sort, CloseBold, Tickets, OfficeBuilding, CollectionTag },
+  components: { Pagination, ElIcon, Filter, Search, Close, Sort, CloseBold, Tickets, OfficeBuilding, CollectionTag, Warning },
   data() {
     return {
       list: null,
@@ -462,6 +467,13 @@ section {
   position: absolute;
   top: 5px;
   right: 5px;
+  z-index: 1;
+}
+
+.card-warning-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
   z-index: 1;
 }
 

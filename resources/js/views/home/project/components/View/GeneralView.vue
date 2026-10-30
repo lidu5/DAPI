@@ -64,6 +64,11 @@
             </el-button>
           </a>
         </template>
+        <template v-else>
+          <el-tooltip content="Legal doc remaining" placement="top" effect="dark">
+            <el-icon style="color:#e6a23c;font-size:18px;cursor:pointer;"><Warning /></el-icon>
+          </el-tooltip>
+        </template>
       </el-descriptions-item>
       <el-descriptions-item label="Project Website Link">
          <el-link type="primary" :href="project.project_website_link" target="_blank">{{ project.project_website_link }}</el-link>
@@ -130,6 +135,7 @@
 <script>
 import General from "../General.vue";
 import { mapGetters } from 'vuex';
+import { Warning } from '@element-plus/icons-vue';
 
 export default {
   name: "General View",
@@ -177,7 +183,7 @@ export default {
 
     }
   },
-  components: { General },
+  components: { General, Warning },
   methods: {
   isPreviewable(fileUrl) {
   const previewableExtensions = ['pdf', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'webp', 'txt'];

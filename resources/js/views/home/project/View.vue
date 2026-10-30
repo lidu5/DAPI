@@ -269,10 +269,7 @@ export default {
         message.push("DAS budget missing")
         this.valid = false
       }
-      if(this.isEmpty(this.project.legal_document)){
-        message.push("DAS legal document missing")
-        this.valid = false
-      }
+
       if(this.isEmpty(this.project.license)){
         message.push("DAS license missing")
         this.valid = false
