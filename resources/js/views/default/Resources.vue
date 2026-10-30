@@ -4,7 +4,7 @@
       <div class="section-title">
         <h2>Resources</h2>
         <p>
-          Below you can find all resources uploaded by the DHPI team. These documents will help you on uploading
+          Below you can find all resources uploaded by the DASI team. These documents will help you on uploading
           resources.
         </p>
       </div>
