@@ -283,7 +283,7 @@ export default {
         this.valid = false
       }
       if(this.isEmpty(this.project.applications)){
-        message.push("DAS application type missing")
+        message.push("DAS use case & initiative missing")
         this.valid = false
       }
       if(this.isEmpty(this.project.operating_systems)){

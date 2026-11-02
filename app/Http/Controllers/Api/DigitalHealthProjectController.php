@@ -403,7 +403,10 @@ class DigitalHealthProjectController extends Controller
 
             if(isset($params["application_type"]) && !empty($params["application_type"])){
                 $project->application_types()->detach();
-                $project->application_types()->attach(ApplicationType::find($params["application_type"]));         
+                $typeIds = array_filter(explode(",", $params["application_type"]), 'is_numeric');
+                foreach($typeIds as $typeId){
+                    $project->application_types()->attach(ApplicationType::find($typeId));
+                }
             }
 
             if(isset($params["standard"]) && !empty($params["standard"])){

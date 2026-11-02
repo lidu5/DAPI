@@ -26,8 +26,8 @@
         <el-option v-for="component in project.components_lists" :key="component.id" :label="component.name" :value="component.id" />
       </el-select>
     </el-form-item>
-     <el-form-item v-if="project.component" label="Which of these best describes what your system is?" prop="application_type">
-      <el-select v-model="project.application_type" placeholder="please select">
+     <el-form-item v-if="project.component" label="Which of these use cases and initiatives does your system support?" prop="application_type">
+      <el-select v-model="project.application_type" multiple placeholder="please select">
         <el-option v-for="application_type in project.application_type_lists" :key="application_type.id" :label="application_type.name" :value="application_type.id" />
       </el-select>
     </el-form-item>
@@ -167,7 +167,7 @@ export default {
         { required: true, message: 'Please input component', trigger: 'blur' },
            ],
            application_type: [
-           { required: true, message: 'Please input service and application type', trigger: 'blur' },
+           { required: true, message: 'Please input use case & initiative', trigger: 'blur' },
            ],
         keywords: [
           { required: true, message: 'Please input keywords', trigger: 'blur' },

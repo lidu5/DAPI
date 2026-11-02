@@ -13,7 +13,7 @@
           style="width: 220px">
           <el-option v-for="component in search_data.components" :key="component.id" :label="component.name" :value="component.id" class="filter-option" />
         </el-select>
-        <el-select v-model="query.application_type" clearable filterable @change="handleFilter" multiple placeholder="Application Type" class="filter-select" size="large"
+        <el-select v-model="query.application_type" clearable filterable @change="handleFilter" multiple placeholder="Use Case & Initiative" class="filter-select" size="large"
           style="width: 220px">
           <el-option v-for="application_type in search_data.application_types" :key="application_type.id" :label="application_type.name" :value="application_type.id"
             class="filter-option" />
@@ -103,7 +103,7 @@
                 size="large">
                 <el-option v-for="component in search_data.components" :key="component.id" :label="component.name" :value="component.id" class="filter-option" />
               </el-select>
-              <el-select v-model="query.application_type" clearable filterable @change="handleFilter" multiple placeholder="Application Type" class="filter-select"
+              <el-select v-model="query.application_type" clearable filterable @change="handleFilter" multiple placeholder="Use Case & Initiative" class="filter-select"
                 size="large">
                 <el-option v-for="application_type in search_data.application_types" :key="application_type.id" :label="application_type.name" :value="application_type.id"
                   class="filter-option" />

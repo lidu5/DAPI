@@ -58,7 +58,7 @@
         <el-col :span="1" />
         <el-col :span="4">
           <el-select v-model="query.application_type" clearable @change="handleFilter"
-              placeholder="Filter by application type">
+              placeholder="Filter by Use Case & Initiative">
               <el-option v-for="application_type in search_data.application_types" :key="application_type.id"
                   :label="application_type.name" :value="application_type.id" />
           </el-select>

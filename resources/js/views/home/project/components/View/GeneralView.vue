@@ -19,7 +19,7 @@
       <el-descriptions-item label="Scope of Agriculture system">
         {{ project.components.map(component => component.name).join(', ') }}
       </el-descriptions-item>
-      <el-descriptions-item label="Service and Application Type the DAS aligns to">
+      <el-descriptions-item label="Use Case & Initiative">
         {{ project.application_types.map(application_type => application_type.name).join(', ') }}
       </el-descriptions-item>
       <el-descriptions-item label="DAS start date">
@@ -208,7 +208,7 @@ export default {
     openUpdateDialog() {
       this.project.lead_organization = this.project.organization.id;
       this.project.component = this.project.components[0]?.id;      
-      this.project.application_type = this.project.application_types[0]?.id;     
+      this.project.application_type = this.project.application_types.map(at => at.id);     
       this.project.partner = this.project.partners.map(partner => partner.id);
       this.project.legal_document = this.project.legal_document;
 

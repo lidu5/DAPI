@@ -87,9 +87,9 @@ const adminRoutes = {
         },
         {
           path: 'application_types',
-          name: 'Application Types',
+          name: 'Use Case & Initiative',
           component: () => import('@/views/admin/application_types'),
-          meta: { title: 'Application Types', icon: 'components', noCache: true },
+          meta: { title: 'Use Case & Initiative', icon: 'components', noCache: true },
         },
       ]
     },

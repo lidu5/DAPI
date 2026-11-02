@@ -1,7 +1,7 @@
 <template>
   <div>
     <AdminLayout
-      entityName="Application Types"
+      entityName="Use Case & Initiative"
       :dynamicFields="itemFields"
       resourceUri="application-types"
     />
