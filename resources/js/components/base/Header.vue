@@ -50,12 +50,12 @@
   <div class="logo-container-icons">
     <div class="logo-container">
       <img 
-        src="@/assets/moh/logo-main.png" 
+        src="@/assets/moh/moa-picture.png" 
         alt="Digital Agriculture System Inventory" 
         class="logo-main"
       />
       <img 
-        src="@/assets/moh/logo_text.jpg" 
+        src="@/assets/moh/moalogo_text.png" 
         alt="Logo Text" 
         class="logo-text"
       />
@@ -86,12 +86,12 @@
     <!-- Logo on the left -->
     <div class="logo-container">
       <img 
-        src="@/assets/moh/logo-main.png" 
+        src="@/assets/moh/moa-picture.png" 
         alt="Digital Agriculture System Inventory" 
         class="logo-main"
       />
       <img 
-        src="@/assets/moh/logo_text.jpg" 
+        src="@/assets/moh/moalogo_text.png" 
         alt="Logo Text" 
         class="logo-text"
       />
