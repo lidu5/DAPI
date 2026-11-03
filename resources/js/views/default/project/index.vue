@@ -25,9 +25,10 @@
             <el-tab-pane label="Coverages" name="Coverages">
               <CoverageView :coverages="project.coverages" :id="project.id" :user_id="project.user_id" :edit="false"/>
             </el-tab-pane>
-            <el-tab-pane label="Activities" name="Activities">
+            <!-- Activities tab temporarily hidden -->
+            <!-- <el-tab-pane label="Activities" name="Activities">
               <ActivityView :activities="project.activities" :id="project.id" :user_id="project.user_id" :edit="false"/>
-            </el-tab-pane>
+            </el-tab-pane> -->
             <el-tab-pane label="Others" name="Others">
               <OtherView :project="project" :edit="false"/>
             </el-tab-pane>

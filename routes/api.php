@@ -74,6 +74,7 @@ Route::namespace('Api')->group(function() {
     Route::get('dashboard/regional-projects-count', [DashboardController::class, 'regionalProjectsCount']);
     Route::get('dashboard/top_lead_organizations', [DashboardController::class, 'topLeadOrganizations']);
     Route::get('dashboard/top_focus_areas', [DashboardController::class, 'topFocusAreas']);
+    Route::get('dashboard/top_application_types', [DashboardController::class, 'topApplicationTypes']);
     Route::get('dashboard/top_challenges', [DashboardController::class, 'topChallenges']);
     Route::get('dashboard/by_status', [DashboardController::class, 'projectsByStatus']);
     Route::get('dashboard/by_license', [DashboardController::class, 'projectsByLicense']);

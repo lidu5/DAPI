@@ -36,6 +36,11 @@
             <top-focus-areas/>
           </div>
         </el-col>
+        <el-col :xs="24" :sm="24" :md="24" :lg="12">
+          <div class="chart-wrapper">
+            <top-application-types/>
+          </div>
+        </el-col>
         <!-- Projects by Digital Agriculture Interventions chart temporarily hidden -->
         <!-- <el-col :xs="24" :sm="24" :md="24" :lg="12">
         <div class="chart-wrapper">
@@ -79,6 +84,7 @@
   const RegionalProjectsCount = defineAsyncComponent(() => import('../../../home/components/RegionalProjectsCount'))
   const TopChallenges = defineAsyncComponent(() => import('../../../home/components/TopChallenges'))
   const TopFocusAreas = defineAsyncComponent(() => import('../../../home/components/TopFocusAreas'))
+  const TopApplicationTypes = defineAsyncComponent(() => import('../../../home/components/TopApplicationTypes'))
   const EHAComponentsProjectsCount = defineAsyncComponent(() => import('../../../home/components/EHAComponentsProjectsCount'))
   const TopPartners = defineAsyncComponent(() => import('../../../home/components/TopPartners'))
   const ProjectsByStatus = defineAsyncComponent(() => import('../../../home/components/ProjectsByStatus'))
@@ -94,6 +100,7 @@
       RegionalProjectsCount,
       TopChallenges,
       TopFocusAreas,
+      TopApplicationTypes,
       EHAComponentsProjectsCount,
       ProjectsByImplementation,
       ProjectsByStatus,

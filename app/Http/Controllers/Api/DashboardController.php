@@ -13,6 +13,7 @@ use App\Models\OrganizationUnit;
 use App\Models\HealthFocusArea;
 use App\Models\HealthSystemChallenge;
 use App\Models\DigitalHealthIntervention;
+use App\Models\ApplicationType;
 
 
 use App\Laravue\JsonResponse;
@@ -64,6 +65,13 @@ class DashboardController extends Controller
     public function topFocusAreas(Request $request){
         $limit = $request->get('limit') ?: static::TOP_ITEMS;
         $result = HealthFocusArea::withCount(['projects' => function (Builder $query) {
+            $query->where('is_registered', true);
+        }])->orderBy('projects_count', 'desc')->paginate($limit);
+        return response()->json(new JsonResponse($result), Response::HTTP_OK);
+    }
+    public function topApplicationTypes(Request $request){
+        $limit = $request->get('limit') ?: static::TOP_ITEMS;
+        $result = ApplicationType::withCount(['projects' => function (Builder $query) {
             $query->where('is_registered', true);
         }])->orderBy('projects_count', 'desc')->paginate($limit);
         return response()->json(new JsonResponse($result), Response::HTTP_OK);
