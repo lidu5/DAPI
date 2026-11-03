@@ -689,7 +689,8 @@ class DigitalHealthProjectController extends Controller
             }
 
             return new DigitalHealthProjectFullResource($project);
-        } catch (\Illuminate\Database\QueryException $exception) {
+        } catch (\Exception $exception) {
+            \Log::error('Resource upload failed: ' . $exception->getMessage());
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
