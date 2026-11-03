@@ -802,13 +802,9 @@ class DigitalHealthProjectController extends Controller
     {
         $project = DigitalHealthProject::find($id);
         if ($project) {
-            $project->status = $project->status_before_archival; 
+            $project->status = static::NEW_PROJECT;
             $project->status_before_archival = '';
-            if ($project->status === static::REQUEST_REGISTRATION || $project->status === static::NEW_PROJECT ||$project->status === static::REJECTED_REGISTRATION) {
-                $project->is_registered = false;
-            } else {
-                $project->is_registered = true;
-            }
+            $project->is_registered = false;
             $project->save();
             return response()->json(['message' => 'Project unarchived successfully!'], 200);
         }
