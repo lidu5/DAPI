@@ -68,6 +68,12 @@ COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Upload directory served from public/storage (logos, legal docs, resources)
+RUN rm -rf /var/www/html/public/storage \
+    && mkdir -p /var/www/html/public/storage \
+    && chown -R www-data:www-data /var/www/html/public/storage \
+    && chmod -R 775 /var/www/html/public/storage
+
 EXPOSE 80
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
