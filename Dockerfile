@@ -61,6 +61,9 @@ RUN chmod -R a+rX /var/www/html \
 # Nginx config
 COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf
 
+# PHP upload limits
+COPY docker/php/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+
 # Supervisor config (runs php-fpm + nginx together)
 COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
