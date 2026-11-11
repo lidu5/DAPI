@@ -19,7 +19,7 @@
       <el-descriptions-item label="DAS API is Open API">
         {{ project.is_openapi != null ? (project.is_openapi == 1 ? 'Yes' : 'No'): "" }}
       </el-descriptions-item>
-      <el-descriptions-item label="Data from DAS sent to MOH">
+      <el-descriptions-item label="Data from DAS sent to MOA">
         {{ project.data_is_sent_to_moh != null ? (project.data_is_sent_to_moh == 1 ? 'Yes' : 'No') : "" }}
       </el-descriptions-item>
       <el-descriptions-item 
