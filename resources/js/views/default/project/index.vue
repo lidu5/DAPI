@@ -13,9 +13,10 @@
             <el-tab-pane label="General" name="General">
               <GeneralView :project="project" :edit="false" :frontend="false"/>
             </el-tab-pane>
-            <el-tab-pane label="Technologies" name="Technologies">
+            <!-- Technologies tab hidden from public -->
+            <!-- <el-tab-pane label="Technologies" name="Technologies">
               <TechnologyView :project="project" :edit="false"/>
-            </el-tab-pane>
+            </el-tab-pane> -->
             <el-tab-pane label="Interoperability and Standards" name="Interoperability and Standards">
               <InteroperabilityStandardView :project="project" :edit="false"/>
             </el-tab-pane>

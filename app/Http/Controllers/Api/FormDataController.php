@@ -68,10 +68,10 @@ class FormDataController extends Controller
             }
             if(str_contains($request->type, 'challenges')){
                 $response->challenges = HealthSystemChallenge::get();          
-            }data_categories')){
+            }
+            if(str_contains($request->type, 'data_categories')){
                 $response->data_categories = SystemDataCategory::get();
             }
-            if(str_contains($request->type, '
             if(str_contains($request->type, 'ownerships')){
                 $response->ownerships = OwnershipType::get();           
             }
