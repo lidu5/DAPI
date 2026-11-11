@@ -20,6 +20,7 @@ use App\Models\DataStandard;
 use App\Models\EhaComponent;
 use App\Models\HealthFocusArea;
 use App\Models\HealthSystemChallenge;
+use App\Models\SystemDataCategory;
 use App\Models\FacilityType;
 use App\Models\OwnershipType;
 use App\Models\DeploymentLocation;
@@ -470,6 +471,13 @@ class DigitalHealthProjectController extends Controller
                 foreach($params["challenge"] as $challenge){
                     $project->challenges()->attach(HealthSystemChallenge::find($challenge));
                 }            
+            }
+
+            if(isset($params["data_category"]) && !empty($params["data_category"])){
+                $project->system_data_categories()->detach();
+                foreach($params["data_category"] as $data_category){
+                    $project->system_data_categories()->attach(SystemDataCategory::find($data_category));
+                }
             }
             if(isset($params["category_of_evidence"]) && !empty($params["category_of_evidence"]) ){                
                 $project->category_of_evidence = $params["category_of_evidence"];

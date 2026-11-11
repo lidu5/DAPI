@@ -75,6 +75,10 @@ class DigitalHealthProject extends Model
         return $this->belongsToMany(HealthSystemChallenge::class, 'digital_health_project_health_system_challenge');
     }
 
+    public function system_data_categories(){
+        return $this->belongsToMany(SystemDataCategory::class, 'digital_health_project_system_data_category');
+    }
+
     public function partners(){
         return $this->belongsToMany(OrganizationUnit::class, 'digital_health_project_partner');
     }

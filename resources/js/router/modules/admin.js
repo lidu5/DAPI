@@ -72,6 +72,12 @@ const adminRoutes = {
           component: () => import('@/views/admin/health_system_challenges'),
           meta: { title: 'Agriculture System Challenges', icon: 'dataline', noCache: true },
         },
+        {
+          path: 'system_data_categories',
+          name: 'Data the System Holds',
+          component: () => import('@/views/admin/system_data_categories'),
+          meta: { title: 'Data the System Holds', icon: 'collection', noCache: true },
+        },
         // Facility Types temporarily hidden
         // {
         //   path: 'facility_types',

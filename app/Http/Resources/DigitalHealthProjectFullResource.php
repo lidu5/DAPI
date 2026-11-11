@@ -49,6 +49,7 @@ class DigitalHealthProjectFullResource extends JsonResource
             'data_is_sent_to_moh' => $this->data_is_sent_to_moh,
             'focus_areas' => $this->focus_areas,
             'challenges' => $this->challenges,
+            'system_data_categories' => $this->system_data_categories,
             'partners' => $this->partners,
             'implementing_partners' => $this->implementing_partners,
             'moh_contribution' => $this->moh_contribution,

@@ -34,6 +34,7 @@ use App\Http\Controllers\Api\OwnershipTypeController;
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\ProgrammingLanguageController;
 use App\Http\Controllers\Api\RegionController;
+use App\Http\Controllers\Api\SystemDataCategoryController;
 
 
 
@@ -164,6 +165,7 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::apiResource('evaluation-metrics', EvaluationMetricsController::class);
     Route::apiResource('health-professional-groups', HealthProfessionalGroupController::class);
     Route::apiResource('health-system-challenges', HealthSystemChallengeController::class);
+    Route::apiResource('system-data-category', SystemDataCategoryController::class);
     Route::apiResource('licenses', LicenseController::class);
     Route::apiResource('organization-units', OrganizationUnitController::class);
     Route::apiResource('osi-approved-licenses', OSIApprovedLicenseController::class);

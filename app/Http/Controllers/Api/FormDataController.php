@@ -20,6 +20,7 @@ use App\Models\EhaComponent;
 use App\Models\ApplicationType;
 use App\Models\HealthFocusArea;
 use App\Models\HealthSystemChallenge;
+use App\Models\SystemDataCategory;
 use App\Models\OwnershipType;
 use App\Models\DeploymentLocation;
 use App\Models\DigitalHealthIntervention;
@@ -67,7 +68,10 @@ class FormDataController extends Controller
             }
             if(str_contains($request->type, 'challenges')){
                 $response->challenges = HealthSystemChallenge::get();          
+            }data_categories')){
+                $response->data_categories = SystemDataCategory::get();
             }
+            if(str_contains($request->type, '
             if(str_contains($request->type, 'ownerships')){
                 $response->ownerships = OwnershipType::get();           
             }

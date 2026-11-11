@@ -239,6 +239,10 @@ import Resource from "./components/Resource.vue";
           this.project.challenges = response.challenges
           this.project.challenge = this.project.challenges.map((challenge) => challenge.id);
         }
+        if(!this.isEmpty(response.system_data_categories)){
+          this.project.system_data_categories = response.system_data_categories
+          this.project.data_category = this.project.system_data_categories.map((data_category) => data_category.id);
+        }
         if(!this.isEmpty(response.moh_contribution)){
           this.project.moh_contribution = response.moh_contribution
         }

@@ -7,7 +7,7 @@
     class="demo-ruleForm"
     :size="formSize"
   >
-    <el-form-item label="What kinds of data does the system hold?" prop="focus_area">
+    <el-form-item label="What is the main agriculture focus area of your initiative" prop="focus_area">
       <el-select v-model="project.focus_area" filterable multiple placeholder="please select">
         <el-option v-for="focus_area in project.focus_areas_lists" :key="focus_area.id" :label="focus_area.name" :value="focus_area.id" />
       </el-select>
@@ -15,6 +15,11 @@
     <el-form-item label="What are the Agriculture System Challenges addressed by the DAS?" prop="challenge">
       <el-select v-model="project.challenge" filterable multiple placeholder="please select">
         <el-option v-for="challenge in project.challenges_lists" :key="challenge.id" :label="challenge.name" :value="challenge.id" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="What data does the system hold?" prop="data_category">
+      <el-select v-model="project.data_category" filterable multiple placeholder="please select">
+        <el-option v-for="data_category in project.data_categories_lists" :key="data_category.id" :label="data_category.name" :value="data_category.id" />
       </el-select>
     </el-form-item>
     <el-form-item label="Is there a MoA contribution to this DAS implementation?">
@@ -201,14 +206,15 @@ export default {
           } else {
             console.log('error submit!', fields)
             reject(false);
-          }        
+          }
         })
       });
     },
     async getFormDatas(){
-      const data = await getFormData.list({type: 'focus_areas,challenges,works,locations,regions,facility_types,professions'})
+      const data = await getFormData.list({type: 'focus_areas,challenges,data_categories,works,locations,regions,facility_types,professions'})
       this.project.focus_areas_lists = data.focus_areas
-      this.project.challenges_lists = data.challenges      
+      this.project.challenges_lists = data.challenges
+      this.project.data_categories_lists = data.data_categories
       this.project.works = data.works
       this.project.locations = data.locations
       this.project.regions = data.regions

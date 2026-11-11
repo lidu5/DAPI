@@ -13,6 +13,9 @@
       <el-descriptions-item label="Agriculture system challenges addressed by the DAS">
         {{ project.challenges.map((challenge) => challenge.name).join(", ") }}
       </el-descriptions-item>
+      <el-descriptions-item label="Data the system holds">
+        {{ (project.system_data_categories || []).map((data_category) => data_category.name).join(", ") }}
+      </el-descriptions-item>
       <el-descriptions-item label="MoH contribution to this DAS implementation">
         {{ project.moh_contribution }}
       </el-descriptions-item>
@@ -162,6 +165,9 @@ export default {
       this.project.challenge = this.project.challenges.map(
         (challenge) => challenge.id
       );
+      this.project.data_category = (this.project.system_data_categories || []).map(
+        (data_category) => data_category.id
+      );
       this.project.implementing_partner = this.project.implementing_partners.map(implementing_partner => implementing_partner.id);
 
       this.project.moh_contribution = this.project.moh_contribution;
@@ -203,6 +209,9 @@ export default {
       }
       if (response.challenges) {
         this.project.challenges = response.challenges;
+      }
+      if (response.system_data_categories) {
+        this.project.system_data_categories = response.system_data_categories;
       }      
       if (response.moh_contribution) {
         this.project.moh_contribution = response.moh_contribution;
