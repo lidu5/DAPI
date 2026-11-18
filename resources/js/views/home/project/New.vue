@@ -292,8 +292,52 @@ import Resource from "./components/Resource.vue";
         if(!this.isEmpty(response.is_openapi)){
           this.project.is_openapi = response.is_openapi == true ? 1 : 0
         }
+        if(!this.isEmpty(response.data_update_frequency)){
+          this.project.data_update_frequency = response.data_update_frequency.id
+        }
+        if(!this.isEmpty(response.holds_personal_data)){
+          this.project.holds_personal_data = response.holds_personal_data == true ? 1 : 0
+        }
+        if(!this.isEmpty(response.identifier_type)){
+          this.project.identifier_type = response.identifier_type.id
+        }
+        if(!this.isEmpty(response.identifier_linked_to_fayda)){
+          this.project.identifier_linked_to_fayda = response.identifier_linked_to_fayda
+        }
+        if(!this.isEmpty(response.receives_data_from)){
+          this.project.receives_data_from = response.receives_data_from
+        }
+        if(!this.isEmpty(response.sends_data_to)){
+          this.project.sends_data_to = response.sends_data_to
+        }
+        if(!this.isEmpty(response.data_exchange_types)){
+          this.project.data_exchange_types = response.data_exchange_types
+          this.project.data_exchange_type = response.data_exchange_types.map((exchange_type) => exchange_type.id)
+        }
+        if(!this.isEmpty(response.receives_data_from_other_systems)){
+          this.project.receives_data_from_other_systems = response.receives_data_from_other_systems == true ? 1 : 0
+        }
+        if(!this.isEmpty(response.sends_data_to_other_systems)){
+          this.project.sends_data_to_other_systems = response.sends_data_to_other_systems == true ? 1 : 0
+        }
         if(!this.isEmpty(response.data_is_sent_to_moh)){
           this.project.data_is_sent_to_moh = response.data_is_sent_to_moh == true ? 1 : 0
+        }
+        if(!this.isEmpty(response.technology_origin)){
+          this.project.technology_origin = response.technology_origin
+        }
+        if(!this.isEmpty(response.works_offline)){
+          this.project.works_offline = response.works_offline
+        }
+        if(!this.isEmpty(response.data_backup)){
+          this.project.data_backup = response.data_backup
+        }
+        if(!this.isEmpty(response.backup_frequency)){
+          this.project.backup_frequency = response.backup_frequency
+        }
+        if(!this.isEmpty(response.system_languages)){
+          this.project.system_languages = response.system_languages
+          this.project.system_language = response.system_languages.map((language) => language.id)
         }        
         
         if(!this.isEmpty(response.coverages)){

@@ -22,6 +22,33 @@
       <el-descriptions-item label="Data from DAS sent to MOA">
         {{ project.data_is_sent_to_moh != null ? (project.data_is_sent_to_moh == 1 ? 'Yes' : 'No') : "" }}
       </el-descriptions-item>
+      <el-descriptions-item label="How often the data is updated">
+        {{ project.data_update_frequency ? project.data_update_frequency.name : '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Does the system hold personal data">
+        {{ project.holds_personal_data != null ? (project.holds_personal_data == 1 ? 'Yes' : 'No') : '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Identifier the system uses for the people or things it records">
+        {{ project.identifier_type ? project.identifier_type.name : '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Is that identifier linked to Fayda, the national digital ID">
+        {{ project.identifier_linked_to_fayda || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Are there other systems the system receives data from">
+        {{ project.receives_data_from_other_systems != null ? (project.receives_data_from_other_systems == 1 ? 'Yes' : 'No') : '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.receives_data_from_other_systems == 1" label="Which other systems the system receives data from">
+        {{ project.receives_data_from || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Are there other systems that receive data from it">
+        {{ project.sends_data_to_other_systems != null ? (project.sends_data_to_other_systems == 1 ? 'Yes' : 'No') : '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.sends_data_to_other_systems == 1" label="Which other systems receive data from it">
+        {{ project.sends_data_to || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.receives_data_from_other_systems == 1 || project.sends_data_to_other_systems == 1" label="How data is exchanged with those systems">
+        {{ project.data_exchange_types ? project.data_exchange_types.map((exchange) => exchange.name).join(', ') : '' }}
+      </el-descriptions-item>
       <el-descriptions-item 
         v-if="editor" 
         v-permission="['edit project']"
@@ -108,6 +135,12 @@ export default {
       this.project.is_api_published = this.project.is_api_published != null ? (this.project.is_api_published == true ? 1 : 0) : null
       this.project.data_is_sent_to_moh = this.project.data_is_sent_to_moh != null ? (this.project.data_is_sent_to_moh == true ? 1 : 0) : null
       this.project.is_openapi = this.project.is_openapi != null ? (this.project.is_openapi == true ? 1 : 0) : null
+      this.project.data_update_frequency = this.project.data_update_frequency ? this.project.data_update_frequency.id : null
+      this.project.holds_personal_data = this.project.holds_personal_data != null ? (this.project.holds_personal_data == true ? 1 : 0) : null
+      this.project.identifier_type = this.project.identifier_type ? this.project.identifier_type.id : null
+      this.project.data_exchange_type = this.project.data_exchange_types ? this.project.data_exchange_types.map((exchange) => exchange.id) : []
+      this.project.receives_data_from_other_systems = this.project.receives_data_from_other_systems != null ? (this.project.receives_data_from_other_systems == true ? 1 : 0) : null
+      this.project.sends_data_to_other_systems = this.project.sends_data_to_other_systems != null ? (this.project.sends_data_to_other_systems == true ? 1 : 0) : null
 
       this.dialogVisible = true;
     },
@@ -117,7 +150,16 @@ export default {
         }
         this.project.has_api_support = response.has_api_support
         this.project.is_api_published = response.is_api_published
-        this.project.data_is_sent_to_moh = response.data_is_sent_to_moh        
+        this.project.data_is_sent_to_moh = response.data_is_sent_to_moh
+        this.project.data_update_frequency = response.data_update_frequency
+        this.project.holds_personal_data = response.holds_personal_data
+        this.project.identifier_type = response.identifier_type
+        this.project.identifier_linked_to_fayda = response.identifier_linked_to_fayda
+        this.project.receives_data_from = response.receives_data_from
+        this.project.sends_data_to = response.sends_data_to
+        this.project.data_exchange_types = response.data_exchange_types
+        this.project.receives_data_from_other_systems = response.receives_data_from_other_systems
+        this.project.sends_data_to_other_systems = response.sends_data_to_other_systems        
     },
   },
 };

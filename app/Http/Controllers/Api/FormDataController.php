@@ -21,6 +21,10 @@ use App\Models\ApplicationType;
 use App\Models\HealthFocusArea;
 use App\Models\HealthSystemChallenge;
 use App\Models\SystemDataCategory;
+use App\Models\DataUpdateFrequency;
+use App\Models\IdentifierType;
+use App\Models\DataExchangeType;
+use App\Models\SystemLanguage;
 use App\Models\OwnershipType;
 use App\Models\DeploymentLocation;
 use App\Models\DigitalHealthIntervention;
@@ -71,6 +75,18 @@ class FormDataController extends Controller
             }
             if(str_contains($request->type, 'data_categories')){
                 $response->data_categories = SystemDataCategory::get();
+            }
+            if(str_contains($request->type, 'data_update_frequencies')){
+                $response->data_update_frequencies = DataUpdateFrequency::get();
+            }
+            if(str_contains($request->type, 'identifier_types')){
+                $response->identifier_types = IdentifierType::get();
+            }
+            if(str_contains($request->type, 'data_exchange_types')){
+                $response->data_exchange_types = DataExchangeType::get();
+            }
+            if(str_contains($request->type, 'system_languages')){
+                $response->system_languages = SystemLanguage::get();
             }
             if(str_contains($request->type, 'ownerships')){
                 $response->ownerships = OwnershipType::get();           

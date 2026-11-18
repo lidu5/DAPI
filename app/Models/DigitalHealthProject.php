@@ -79,6 +79,22 @@ class DigitalHealthProject extends Model
         return $this->belongsToMany(SystemDataCategory::class, 'digital_health_project_system_data_category');
     }
 
+    public function data_update_frequency(){
+        return $this->belongsTo(DataUpdateFrequency::class, 'data_update_frequency_id');
+    }
+
+    public function identifier_type(){
+        return $this->belongsTo(IdentifierType::class, 'identifier_type_id');
+    }
+
+    public function data_exchange_types(){
+        return $this->belongsToMany(DataExchangeType::class, 'digital_health_project_data_exchange_type');
+    }
+
+    public function system_languages(){
+        return $this->belongsToMany(SystemLanguage::class, 'digital_health_project_system_language');
+    }
+
     public function partners(){
         return $this->belongsToMany(OrganizationUnit::class, 'digital_health_project_partner');
     }

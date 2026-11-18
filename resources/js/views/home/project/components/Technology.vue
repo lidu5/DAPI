@@ -87,6 +87,42 @@
     <el-form-item label="What other third-party tools the DAS depends on?" prop="third_party_tools">
       <el-input v-model="project.third_party_tools" :rows="6" type="textarea" />
     </el-form-item>
+    <el-form-item label="Was it built from scratch or on something existing?">
+      <el-select v-model="project.technology_origin" placeholder="please select">
+        <el-option label="Built bespoke" value="Built bespoke" />
+        <el-option label="Commercial off-the-shelf product" value="Commercial off-the-shelf product" />
+        <el-option label="Open-source product, configured" value="Open-source product, configured" />
+        <el-option label="Built on a DPI building block (e.g. OpenG2P, ODK)" value="Built on a DPI building block (e.g. OpenG2P, ODK)" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Does the system work offline?">
+      <el-select v-model="project.works_offline" placeholder="please select">
+        <el-option label="Yes, fully" value="Yes, fully" />
+        <el-option label="Partially" value="Partially" />
+        <el-option label="No" value="No" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Is there a backup of the system data?">
+      <el-select v-model="project.data_backup" placeholder="please select">
+        <el-option label="Yes: automated" value="Yes: automated" />
+        <el-option label="Yes: manual" value="Yes: manual" />
+        <el-option label="No" value="No" />
+      </el-select>
+    </el-form-item>
+    <el-form-item v-if="project.data_backup === 'Yes: automated' || project.data_backup === 'Yes: manual'" label="How often is it backed up?">
+      <el-select v-model="project.backup_frequency" placeholder="please select">
+        <el-option label="Continuously" value="Continuously" />
+        <el-option label="Daily" value="Daily" />
+        <el-option label="Weekly" value="Weekly" />
+        <el-option label="Monthly" value="Monthly" />
+        <el-option label="Ad hoc" value="Ad hoc" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Which languages is the system available in?">
+      <el-select v-model="project.system_language" multiple filterable collapse-tags placeholder="please select">
+        <el-option v-for="language in project.system_languages_lists" :key="language.id" :label="language.name" :value="language.id" />
+      </el-select>
+    </el-form-item>
   </el-form>
 </template>
 
@@ -181,7 +217,7 @@ this.project.git_link = addProtocol(this.project.git_link);
       });
     },
     async getFormDatas(){
-      const data = await getFormData.list({type: 'licenses,applications,oses,languages,dbms,ownerships,osi_licenses'})
+      const data = await getFormData.list({type: 'licenses,applications,oses,languages,dbms,ownerships,osi_licenses,system_languages'})
       this.project.licenses_lists = data.licenses
       this.project.applications_lists = data.applications
       this.project.oses_lists = data.oses
@@ -189,6 +225,7 @@ this.project.git_link = addProtocol(this.project.git_link);
       this.project.languages_lists = data.languages
       this.project.ownerships_list = data.ownerships
       this.project.osi_licenses_lists = data.osi_licenses
+      this.project.system_languages_lists = data.system_languages
   
 
       this.otherApplicationId = this.project.applications_lists.find(app => app.name === 'Other')?.id;

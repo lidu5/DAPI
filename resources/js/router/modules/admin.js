@@ -138,6 +138,30 @@ const adminRoutes = {
           meta: { title: 'Data Standards', icon: 'document', noCache: true },
         },
         {
+          path: 'data_update_frequencies',
+          name: 'Data Update Frequencies',
+          component: () => import('@/views/admin/data_update_frequencies'),
+          meta: { title: 'Data Update Frequencies', icon: 'list', noCache: true },
+        },
+        {
+          path: 'identifier_types',
+          name: 'Identifier Types',
+          component: () => import('@/views/admin/identifier_types'),
+          meta: { title: 'Identifier Types', icon: 'list', noCache: true },
+        },
+        {
+          path: 'data_exchange_types',
+          name: 'Data Exchange Types',
+          component: () => import('@/views/admin/data_exchange_types'),
+          meta: { title: 'Data Exchange Types', icon: 'list', noCache: true },
+        },
+        {
+          path: 'system_languages',
+          name: 'System Languages',
+          component: () => import('@/views/admin/system_languages'),
+          meta: { title: 'System Languages', icon: 'list', noCache: true },
+        },
+        {
           path: 'licenses',
           name: 'Licenses',
           component: () => import('@/views/admin/licenses'),

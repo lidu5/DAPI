@@ -61,6 +61,53 @@
         <el-option label="No" :value="0" />
       </el-select>
     </el-form-item>
+    <el-form-item label="Does the system hold personal data?">
+      <el-select v-model="project.holds_personal_data" placeholder="please select">
+        <el-option label="Yes" :value="1" />
+        <el-option label="No" :value="0" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="How often is the data updated?">
+      <el-select v-model="project.data_update_frequency" filterable placeholder="please select">
+        <el-option v-for="frequency in project.data_update_frequencies_lists" :key="frequency.id" :label="frequency.name" :value="frequency.id" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="What identifier does the system use for the people or things it records?">
+      <el-select v-model="project.identifier_type" filterable placeholder="please select">
+        <el-option v-for="identifier in project.identifier_types_lists" :key="identifier.id" :label="identifier.name" :value="identifier.id" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Is that identifier linked to Fayda, the national digital ID?">
+      <el-select v-model="project.identifier_linked_to_fayda" placeholder="please select">
+        <el-option label="Yes" value="Yes" />
+        <el-option label="No" value="No" />
+        <el-option label="Planned" value="Planned" />
+        <el-option label="Not applicable" value="Not applicable" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Are there other systems that your system receives data from?">
+      <el-select v-model="project.receives_data_from_other_systems" placeholder="please select">
+        <el-option label="Yes" :value="1" />
+        <el-option label="No" :value="0" />
+      </el-select>
+    </el-form-item>
+    <el-form-item v-if="project.receives_data_from_other_systems == 1" label="Which other systems does your system receive data from?">
+      <el-input v-model="project.receives_data_from" type="textarea" :rows="2" />
+    </el-form-item>
+    <el-form-item label="Are there other systems that receive data from yours?">
+      <el-select v-model="project.sends_data_to_other_systems" placeholder="please select">
+        <el-option label="Yes" :value="1" />
+        <el-option label="No" :value="0" />
+      </el-select>
+    </el-form-item>
+    <el-form-item v-if="project.sends_data_to_other_systems == 1" label="Which other systems receive data from yours?">
+      <el-input v-model="project.sends_data_to" type="textarea" :rows="2" />
+    </el-form-item>
+    <el-form-item v-if="project.receives_data_from_other_systems == 1 || project.sends_data_to_other_systems == 1" label="How is data exchanged with those systems?">
+      <el-select v-model="project.data_exchange_type" multiple filterable collapse-tags placeholder="please select">
+        <el-option v-for="exchange in project.data_exchange_types_lists" :key="exchange.id" :label="exchange.name" :value="exchange.id" />
+      </el-select>
+    </el-form-item>
   </el-form>
 </template>
 
@@ -115,9 +162,12 @@ export default {
     },
     async getFormDatas(){
       try {
-        const data = await getFormData.list({ type: 'standard' });
+        const data = await getFormData.list({ type: 'standard,data_update_frequencies,identifier_types,data_exchange_types' });
         this.project.standards_lists = data.standard;
         this.project.standards_category = [...new Set(data.standard.map((item) => item.category))];
+        this.project.data_update_frequencies_lists = data.data_update_frequencies;
+        this.project.identifier_types_lists = data.identifier_types;
+        this.project.data_exchange_types_lists = data.data_exchange_types;
       } catch (error) {
         console.error('Error fetching form data:', error);
       }

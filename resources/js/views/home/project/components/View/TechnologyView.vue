@@ -97,6 +97,21 @@
       <el-descriptions-item label="Other third-party tools the DAS depends on">
         {{ project.third_party_tools }}
       </el-descriptions-item>
+      <el-descriptions-item label="Was it built from scratch or on something existing">
+        {{ project.technology_origin || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Does the system work offline">
+        {{ project.works_offline || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Is there a backup of the system data">
+        {{ project.data_backup || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.data_backup === 'Yes: automated' || project.data_backup === 'Yes: manual'" label="How often is it backed up">
+        {{ project.backup_frequency || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Which languages is the system available in">
+        {{ project.system_languages ? project.system_languages.map((language) => language.name).join(', ') : '' }}
+      </el-descriptions-item>
       <el-descriptions-item 
         v-if="editor" 
         v-permission="['edit project']"
@@ -193,6 +208,7 @@ export default {
         (framework) => framework.id
       );
       this.project.db = this.project.databases.map((database) => database.id);
+      this.project.system_language = this.project.system_languages ? this.project.system_languages.map((language) => language.id) : [];
       this.dialogVisible = true;
     },
     updateProject(response) {
@@ -245,6 +261,11 @@ export default {
       if (response.other_databases) {
         this.project.other_databases = response.other_databases;
       }
+      this.project.technology_origin = response.technology_origin;
+      this.project.works_offline = response.works_offline;
+      this.project.data_backup = response.data_backup;
+      this.project.backup_frequency = response.backup_frequency;
+      this.project.system_languages = response.system_languages;
     },
   },
 };

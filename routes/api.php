@@ -35,6 +35,10 @@ use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\ProgrammingLanguageController;
 use App\Http\Controllers\Api\RegionController;
 use App\Http\Controllers\Api\SystemDataCategoryController;
+use App\Http\Controllers\Api\DataUpdateFrequencyController;
+use App\Http\Controllers\Api\IdentifierTypeController;
+use App\Http\Controllers\Api\DataExchangeTypeController;
+use App\Http\Controllers\Api\SystemLanguageController;
 
 
 
@@ -166,6 +170,10 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::apiResource('health-professional-groups', HealthProfessionalGroupController::class);
     Route::apiResource('health-system-challenges', HealthSystemChallengeController::class);
     Route::apiResource('system-data-category', SystemDataCategoryController::class);
+    Route::apiResource('data-update-frequency', DataUpdateFrequencyController::class);
+    Route::apiResource('identifier-type', IdentifierTypeController::class);
+    Route::apiResource('data-exchange-type', DataExchangeTypeController::class);
+    Route::apiResource('system-language', SystemLanguageController::class);
     Route::apiResource('licenses', LicenseController::class);
     Route::apiResource('organization-units', OrganizationUnitController::class);
     Route::apiResource('osi-approved-licenses', OSIApprovedLicenseController::class);

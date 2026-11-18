@@ -21,6 +21,8 @@ use App\Models\EhaComponent;
 use App\Models\HealthFocusArea;
 use App\Models\HealthSystemChallenge;
 use App\Models\SystemDataCategory;
+use App\Models\DataExchangeType;
+use App\Models\SystemLanguage;
 use App\Models\FacilityType;
 use App\Models\OwnershipType;
 use App\Models\DeploymentLocation;
@@ -456,6 +458,120 @@ class DigitalHealthProjectController extends Controller
                     $project->data_is_sent_to_moh = $params["data_is_sent_to_moh"];
                 } else {
                     $project->data_is_sent_to_moh = 0;
+                }
+            }
+
+            if(isset($params["holds_personal_data"])){
+                if ($params["holds_personal_data"] !== null && $params["holds_personal_data"] !== ""){
+                    $project->holds_personal_data = $params["holds_personal_data"];
+                } else {
+                    $project->holds_personal_data = null;
+                }
+            }
+
+            if(isset($params["data_update_frequency"])){
+                if (!empty($params["data_update_frequency"])){
+                    $project->data_update_frequency_id = $params["data_update_frequency"];
+                } else {
+                    $project->data_update_frequency_id = null;
+                }
+            }
+
+            if(isset($params["identifier_type"])){
+                if (!empty($params["identifier_type"])){
+                    $project->identifier_type_id = $params["identifier_type"];
+                } else {
+                    $project->identifier_type_id = null;
+                }
+            }
+
+            if(isset($params["identifier_linked_to_fayda"])){
+                if (!empty($params["identifier_linked_to_fayda"])){
+                    $project->identifier_linked_to_fayda = $params["identifier_linked_to_fayda"];
+                } else {
+                    $project->identifier_linked_to_fayda = null;
+                }
+            }
+
+            if(isset($params["receives_data_from"])){
+                if (!empty($params["receives_data_from"])){
+                    $project->receives_data_from = $params["receives_data_from"];
+                } else {
+                    $project->receives_data_from = null;
+                }
+            }
+
+            if(isset($params["sends_data_to"])){
+                if (!empty($params["sends_data_to"])){
+                    $project->sends_data_to = $params["sends_data_to"];
+                } else {
+                    $project->sends_data_to = null;
+                }
+            }
+
+            if(isset($params["data_exchange_type"])){
+                $project->data_exchange_types()->detach();
+                if(!empty($params["data_exchange_type"])){
+                    foreach($params["data_exchange_type"] as $exchange_type){
+                        $project->data_exchange_types()->attach(DataExchangeType::find($exchange_type));
+                    }
+                }
+            }
+
+            if(isset($params["receives_data_from_other_systems"])){
+                if ($params["receives_data_from_other_systems"] !== null && $params["receives_data_from_other_systems"] !== ""){
+                    $project->receives_data_from_other_systems = $params["receives_data_from_other_systems"];
+                } else {
+                    $project->receives_data_from_other_systems = null;
+                }
+            }
+
+            if(isset($params["sends_data_to_other_systems"])){
+                if ($params["sends_data_to_other_systems"] !== null && $params["sends_data_to_other_systems"] !== ""){
+                    $project->sends_data_to_other_systems = $params["sends_data_to_other_systems"];
+                } else {
+                    $project->sends_data_to_other_systems = null;
+                }
+            }
+
+            if(isset($params["technology_origin"])){
+                if (!empty($params["technology_origin"])){
+                    $project->technology_origin = $params["technology_origin"];
+                } else {
+                    $project->technology_origin = null;
+                }
+            }
+
+            if(isset($params["works_offline"])){
+                if (!empty($params["works_offline"])){
+                    $project->works_offline = $params["works_offline"];
+                } else {
+                    $project->works_offline = null;
+                }
+            }
+
+            if(isset($params["data_backup"])){
+                if (!empty($params["data_backup"])){
+                    $project->data_backup = $params["data_backup"];
+                } else {
+                    $project->data_backup = null;
+                }
+            }
+
+            if(isset($params["backup_frequency"])){
+                if (!empty($params["backup_frequency"])){
+                    $project->backup_frequency = $params["backup_frequency"];
+                } else {
+                    $project->backup_frequency = null;
+                }
+            }
+
+            if(isset($params["system_language"])){
+                $project->system_languages()->detach();
+                if(!empty($params["system_language"])){
+                    foreach($params["system_language"] as $system_language){
+                        $project->system_languages()->attach(SystemLanguage::find($system_language));
+                    }
                 }
             }
 
