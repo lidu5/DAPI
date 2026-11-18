@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('digital_health_project_system_language', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('digital_health_project_id')->constrained('digital_health_projects')->onDelete('cascade');
-            $table->foreignId('system_language_id')->constrained('system_languages')->onDelete('cascade');
+            $table->foreignId('digital_health_project_id', 'dhp_system_language_project_id_fk')
+                  ->constrained('digital_health_projects')->onDelete('cascade');
+            $table->foreignId('system_language_id', 'dhp_system_language_language_id_fk')
+                  ->constrained('system_languages')->onDelete('cascade');
             $table->timestamps();
         });
     }
