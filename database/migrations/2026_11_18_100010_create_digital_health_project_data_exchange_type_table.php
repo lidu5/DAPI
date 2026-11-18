@@ -17,11 +17,14 @@ return new class extends Migration
         Schema::dropIfExists('digital_health_project_data_exchange_type');
         Schema::create('digital_health_project_data_exchange_type', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('digital_health_project_id', 'dhp_data_exchange_type_project_id_fk')
-                  ->constrained('digital_health_projects')->onDelete('cascade');
-            $table->foreignId('data_exchange_type_id', 'dhp_data_exchange_type_type_id_fk')
-                  ->constrained('data_exchange_types')->onDelete('cascade');
+            $table->unsignedBigInteger('digital_health_project_id');
+            $table->unsignedBigInteger('data_exchange_type_id');
             $table->timestamps();
+
+            $table->foreign('digital_health_project_id', 'dhp_data_exchange_type_project_id_fk')
+                  ->references('id')->on('digital_health_projects')->onDelete('cascade');
+            $table->foreign('data_exchange_type_id', 'dhp_data_exchange_type_type_id_fk')
+                  ->references('id')->on('data_exchange_types')->onDelete('cascade');
         });
 
         // Carry over existing single-select values into the new pivot table
