@@ -156,9 +156,10 @@
                   class="project-logo"
                 /> -->
                   <img
-    :src="item.logo ? item.logo : getRandomHealthTechImage()"
+    :src="item.logo ? item.logo : defaultAgri"
     alt="Project Image"
     class="card-image"
+    @error="handleImageError"
   />
                 <div class="card-image-tags">
                   <el-tag v-if="item.focus_areas && item.focus_areas.length > 0" class="focus-area-tag" :title="item.focus_areas.map(f => f.name).join(', ')">
@@ -214,8 +215,7 @@ import Pagination from '@/components/Pagination';
 import Resource from '@/api/resource';
 import { ElIcon } from 'element-plus';
 import { Filter, Search, Close, Grid, Tickets, OfficeBuilding, CollectionTag, CloseBold, Sort, DataAnalysis, Warning } from '@element-plus/icons-vue';
-import image1 from '@/assets/project-images/image1.jpg';
-import image4 from '@/assets/project-images/image4.jpg';
+import defaultAgri from '@/assets/home/default agri.jpg';
 
 const search = new Resource('search');
 const projectSearchData = new Resource('projects/search-data');
@@ -242,13 +242,10 @@ export default {
         sort_by: ''
       },
       search_data: {},
+      defaultAgri,
       sidebarCollapsed: false,
       showFilterMenu: false,
       showOrderMenu: false,
-      healthTechImages: [
-        image1,
-        image4
-      ]
     };
   },
   created() {
@@ -299,9 +296,10 @@ export default {
     toggleSidebar() {
       this.sidebarCollapsed = !this.sidebarCollapsed;
     },
-    getRandomHealthTechImage() {
-      const randomIndex = Math.floor(Math.random() * this.healthTechImages.length);
-      return this.healthTechImages[randomIndex];
+    handleImageError(event) {
+      if (event.target.src !== defaultAgri) {
+        event.target.src = defaultAgri;
+      }
     },
     getDisplayFocusArea(focusAreas) {
       if (focusAreas && focusAreas.length > 0) {

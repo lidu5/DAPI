@@ -191,7 +191,7 @@ export default {
   height: 10px;
   width: 50%;
   margin: 20px auto;
-  background: radial-gradient(circle, #00ff556bff 30%, transparent 30%) 0 0 / 20px 20px repeat-x;
+  background: radial-gradient(circle, #00ff556b 30%, transparent 30%) 0 0 / 20px 20px repeat-x;
 }
 
 @media (max-width: 768px) {
