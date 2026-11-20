@@ -34,6 +34,9 @@
       <el-descriptions-item label="Link to the DAS documentation">
         <el-link type="primary" :href="project.documentation_link">{{ project.documentation_link }}</el-link>
       </el-descriptions-item>
+      <el-descriptions-item label="When was the documentation last updated">
+        {{ project.documentation_last_updated || '' }}
+      </el-descriptions-item>
       <el-descriptions-item label="Link to the software wiki page">
         <el-link type="primary" :href="project.wiki_page">{{ project.wiki_page }}</el-link>
       </el-descriptions-item>
@@ -108,6 +111,24 @@
       </el-descriptions-item>
       <el-descriptions-item v-if="project.data_backup === 'Yes: automated' || project.data_backup === 'Yes: manual'" label="How often is it backed up">
         {{ project.backup_frequency || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.data_backup === 'Yes: automated' || project.data_backup === 'Yes: manual'" label="Where are backups stored">
+        {{ project.backup_location || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.data_backup === 'Yes: automated' || project.data_backup === 'Yes: manual'" label="Has a restore from backup been tested">
+        {{ project.restore_tested || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item label="Has the system been certified by INSA">
+        {{ project.insa_certified || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.insa_certified === 'Yes'" label="Security clearance">
+        <el-link v-if="project.security_clearance" type="primary" :href="project.security_clearance" target="_blank">View Uploaded</el-link>
+      </el-descriptions-item>
+      <el-descriptions-item label="Has the system been formally handed over to MOA ICT">
+        {{ project.moa_ict_handover || '' }}
+      </el-descriptions-item>
+      <el-descriptions-item v-if="project.moa_ict_handover === 'Yes'" label="Handover evidence">
+        <el-link v-if="project.handover_document" type="primary" :href="project.handover_document" target="_blank">View Uploaded</el-link>
       </el-descriptions-item>
       <el-descriptions-item label="Which languages is the system available in">
         {{ project.system_languages ? project.system_languages.map((language) => language.name).join(', ') : '' }}
@@ -230,6 +251,7 @@ export default {
       if (response.documentation_link) {
         this.project.documentation_link = response.documentation_link;
       }
+      this.project.documentation_last_updated = response.documentation_last_updated;
       if (response.wiki_page) {
         this.project.wiki_page = response.wiki_page;
       }
@@ -265,6 +287,12 @@ export default {
       this.project.works_offline = response.works_offline;
       this.project.data_backup = response.data_backup;
       this.project.backup_frequency = response.backup_frequency;
+      this.project.backup_location = response.backup_location;
+      this.project.restore_tested = response.restore_tested;
+      this.project.insa_certified = response.insa_certified;
+      this.project.security_clearance = response.security_clearance;
+      this.project.moa_ict_handover = response.moa_ict_handover;
+      this.project.handover_document = response.handover_document;
       this.project.system_languages = response.system_languages;
     },
   },

@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('digital_health_projects', function (Blueprint $table) {
+            $table->enum('moa_ict_handover', ['Yes', 'No'])->nullable()->after('security_clearance');
+            $table->string('handover_document')->nullable()->after('moa_ict_handover');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('digital_health_projects', function (Blueprint $table) {
+            $table->dropColumn(['moa_ict_handover', 'handover_document']);
+        });
+    }
+};

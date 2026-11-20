@@ -336,6 +336,14 @@ class DigitalHealthProjectController extends Controller
                 $project->documentation_link = $params["documentation_link"];
             }
 
+            if(isset($params["documentation_last_updated"])){
+                if(!empty($params["documentation_last_updated"]) && (bool)strtotime($params["documentation_last_updated"])){
+                    $project->documentation_last_updated = $params["documentation_last_updated"];
+                } else {
+                    $project->documentation_last_updated = null;
+                }
+            }
+
             if(isset($params["wiki_page"]) && !empty($params["wiki_page"])){
                 $project->wiki_page_link = $params["wiki_page"];
             }
@@ -563,6 +571,80 @@ class DigitalHealthProjectController extends Controller
                     $project->backup_frequency = $params["backup_frequency"];
                 } else {
                     $project->backup_frequency = null;
+                }
+            }
+
+            if(isset($params["backup_location"])){
+                if (!empty($params["backup_location"])){
+                    $project->backup_location = $params["backup_location"];
+                } else {
+                    $project->backup_location = null;
+                }
+            }
+
+            if(isset($params["restore_tested"])){
+                if (!empty($params["restore_tested"])){
+                    $project->restore_tested = $params["restore_tested"];
+                } else {
+                    $project->restore_tested = null;
+                }
+            }
+
+            if(isset($params["insa_certified"])){
+                if (!empty($params["insa_certified"])){
+                    $project->insa_certified = $params["insa_certified"];
+                } else {
+                    $project->insa_certified = null;
+                }
+            }
+
+            if(isset($params["data_security_clearance_file"])){
+                if(!empty($project->security_clearance)){
+                    $existFile = 'storage/security_clearance/'.$project->security_clearance;
+                    if(file_exists($existFile)){
+                        unlink($existFile);
+                    }
+                }
+
+                $fileName = $this->uploadSecurityClearance($params['data_security_clearance_file']);
+
+                if ($fileName == null){
+                    return response()->json("Uploading security clearance error. Please contact Administrator or try later!", 500);
+                }
+
+                $project->security_clearance = $fileName;
+            }
+
+            if(isset($params["moa_ict_handover"])){
+                if (!empty($params["moa_ict_handover"])){
+                    $project->moa_ict_handover = $params["moa_ict_handover"];
+                } else {
+                    $project->moa_ict_handover = null;
+                }
+            }
+
+            if(isset($params["data_handover_document_file"])){
+                if(!empty($project->handover_document)){
+                    $existFile = 'storage/handover_doc/'.$project->handover_document;
+                    if(file_exists($existFile)){
+                        unlink($existFile);
+                    }
+                }
+
+                $fileName = $this->uploadHandoverDocument($params['data_handover_document_file']);
+
+                if ($fileName == null){
+                    return response()->json("Uploading handover document error. Please contact Administrator or try later!", 500);
+                }
+
+                $project->handover_document = $fileName;
+            }
+
+            if(isset($params["training_available"])){
+                if (!empty($params["training_available"])){
+                    $project->training_available = $params["training_available"];
+                } else {
+                    $project->training_available = null;
                 }
             }
 
@@ -1250,6 +1332,64 @@ class DigitalHealthProjectController extends Controller
             return $sub_folder.'/'.$fileName;
         } catch (\Exception $exception) {
             \Log::error('Legal document upload failed: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    private function uploadSecurityClearance($file){
+        try {
+            if (!$file instanceof \Illuminate\Http\UploadedFile) {
+                return $file; 
+            }
+    
+            if ($file->getSize() / (1024 * 1024) > 10) {
+                \Log::error('Security clearance upload failed: File exceeds 10MB limit');
+                return null;
+            }
+    
+            $sub_folder = date("F").date("Y");
+            $fileName = time().'.'.$file->extension();
+            $storagePath = 'security_clearance/'.$sub_folder;
+            
+            $path = $file->storeAs($storagePath, $fileName, 'public');
+            
+            if (!$path) {
+                \Log::error('Security clearance upload failed: storeAs returned false');
+                return null;
+            }
+    
+            return $sub_folder.'/'.$fileName;
+        } catch (\Exception $exception) {
+            \Log::error('Security clearance upload failed: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    private function uploadHandoverDocument($file){
+        try {
+            if (!$file instanceof \Illuminate\Http\UploadedFile) {
+                return $file; 
+            }
+    
+            if ($file->getSize() / (1024 * 1024) > 10) {
+                \Log::error('Handover document upload failed: File exceeds 10MB limit');
+                return null;
+            }
+    
+            $sub_folder = date("F").date("Y");
+            $fileName = time().'.'.$file->extension();
+            $storagePath = 'handover_doc/'.$sub_folder;
+            
+            $path = $file->storeAs($storagePath, $fileName, 'public');
+            
+            if (!$path) {
+                \Log::error('Handover document upload failed: storeAs returned false');
+                return null;
+            }
+    
+            return $sub_folder.'/'.$fileName;
+        } catch (\Exception $exception) {
+            \Log::error('Handover document upload failed: ' . $exception->getMessage());
             return null;
         }
     }

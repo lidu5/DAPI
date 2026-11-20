@@ -104,6 +104,13 @@
     <el-form-item label="Please provide a narrative summary of the DAS." prop="summary">
       <el-input v-model="project.summary" :rows="6" type="textarea"/>
     </el-form-item>
+    <el-form-item label="Is training available for users?">
+      <el-select v-model="project.training_available" placeholder="please select">
+        <el-option label="Yes ongoing" value="Yes ongoing" />
+        <el-option label="Yes, one-off" value="Yes, one-off" />
+        <el-option label="No" value="No" />
+      </el-select>
+    </el-form-item>
   </el-form>
 </template>
 
@@ -261,7 +268,8 @@ export default {
             }  
             if (this.project.keywords) {
               data.append('keywords', this.project.keywords);
-            }            
+            }
+            data.append('training_available', this.project.training_available || '');
            
             dhpi.store(data)
               .then(response => {

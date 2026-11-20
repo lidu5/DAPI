@@ -194,6 +194,9 @@ import Resource from "./components/Resource.vue";
         if(!this.isEmpty(response.documentation_link)){
           this.project.documentation_link = response.documentation_link
         }
+        if(!this.isEmpty(response.documentation_last_updated)){
+          this.project.documentation_last_updated = response.documentation_last_updated
+        }
         if(!this.isEmpty(response.wiki_page)){
           this.project.wiki_page = response.wiki_page
         }
@@ -334,6 +337,27 @@ import Resource from "./components/Resource.vue";
         }
         if(!this.isEmpty(response.backup_frequency)){
           this.project.backup_frequency = response.backup_frequency
+        }
+        if(!this.isEmpty(response.backup_location)){
+          this.project.backup_location = response.backup_location
+        }
+        if(!this.isEmpty(response.restore_tested)){
+          this.project.restore_tested = response.restore_tested
+        }
+        if(!this.isEmpty(response.insa_certified)){
+          this.project.insa_certified = response.insa_certified
+        }
+        if(!this.isEmpty(response.security_clearance)){
+          this.project.security_clearance = response.security_clearance
+        }
+        if(!this.isEmpty(response.moa_ict_handover)){
+          this.project.moa_ict_handover = response.moa_ict_handover
+        }
+        if(!this.isEmpty(response.handover_document)){
+          this.project.handover_document = response.handover_document
+        }
+        if(!this.isEmpty(response.training_available)){
+          this.project.training_available = response.training_available
         }
         if(!this.isEmpty(response.system_languages)){
           this.project.system_languages = response.system_languages

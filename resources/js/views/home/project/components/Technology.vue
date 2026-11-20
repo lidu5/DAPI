@@ -37,6 +37,13 @@
         <template #prepend>Http://</template>
       </el-input>
     </el-form-item>
+    <el-form-item label="When was the documentation last updated?">
+      <el-date-picker 
+        v-model="project.documentation_last_updated"
+        format="YYYY-MM-DD"
+        value-format="YYYY-MM-DD"
+        />
+    </el-form-item>
     <el-form-item label="Link to the software wiki page" prop="wiki_page">
       <el-input v-model="project.wiki_page" type="url">
         <template #prepend>Http://</template>
@@ -118,6 +125,65 @@
         <el-option label="Ad hoc" value="Ad hoc" />
       </el-select>
     </el-form-item>
+    <el-form-item v-if="project.data_backup === 'Yes: automated' || project.data_backup === 'Yes: manual'" label="Where are backups stored?">
+      <el-select v-model="project.backup_location" placeholder="please select">
+        <el-option label="Same server" value="Same server" />
+        <el-option label="Separate server on the same site" value="Separate server on the same site" />
+        <el-option label="Offsite within Ethiopia" value="Offsite within Ethiopia" />
+        <el-option label="Cloud within Ethiopia" value="Cloud within Ethiopia" />
+      </el-select>
+    </el-form-item>
+    <el-form-item v-if="project.data_backup === 'Yes: automated' || project.data_backup === 'Yes: manual'" label="Has a restore from backup been tested?">
+      <el-select v-model="project.restore_tested" placeholder="please select">
+        <el-option label="Yes, within the last 12 months" value="Yes, within the last 12 months" />
+        <el-option label="Yes, more than 12 months ago" value="Yes, more than 12 months ago" />
+        <el-option label="Never" value="Never" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Has the system been certified by INSA?">
+      <el-select v-model="project.insa_certified" placeholder="please select">
+        <el-option label="Yes" value="Yes" />
+        <el-option label="No" value="No" />
+      </el-select>
+    </el-form-item>
+    <el-form-item v-if="project.insa_certified === 'Yes'" label="Please upload the security clearance">
+      <el-space fill>
+        <el-form-item>
+          <a v-if="project.security_clearance && !project.security_clearance_file" :href="project.security_clearance" target="_blank" style="color: blue; text-decoration: underline; cursor: pointer;"> View Uploaded</a>
+          <input id="security-clearance-file" type="file" @change="selectSecurityClearanceFile">
+        </el-form-item>
+        <el-alert
+          type="info"
+          show-icon
+          :closable="false"
+          style="margin-top: 5px; padding: 4px 4px; font-size: 13px;"
+        >
+          <p>Attached document should be a maximum of 10 MB.</p>
+        </el-alert>
+      </el-space>
+    </el-form-item>
+    <el-form-item label="Has the system been formally handed over to MOA ICT?">
+      <el-select v-model="project.moa_ict_handover" placeholder="please select">
+        <el-option label="Yes" value="Yes" />
+        <el-option label="No" value="No" />
+      </el-select>
+    </el-form-item>
+    <el-form-item v-if="project.moa_ict_handover === 'Yes'" label="Please provide supporting documentation or evidence of the handover">
+      <el-space fill>
+        <el-form-item>
+          <a v-if="project.handover_document && !project.handover_document_file" :href="project.handover_document" target="_blank" style="color: blue; text-decoration: underline; cursor: pointer;"> View Uploaded</a>
+          <input id="handover-document-file" type="file" @change="selectHandoverFile">
+        </el-form-item>
+        <el-alert
+          type="info"
+          show-icon
+          :closable="false"
+          style="margin-top: 5px; padding: 4px 4px; font-size: 13px;"
+        >
+          <p>Attached document should be a maximum of 10 MB.</p>
+        </el-alert>
+      </el-space>
+    </el-form-item>
     <el-form-item label="Which languages is the system available in?">
       <el-select v-model="project.system_language" multiple filterable collapse-tags placeholder="please select">
         <el-option v-for="language in project.system_languages_lists" :key="language.id" :label="language.name" :value="language.id" />
@@ -198,7 +264,31 @@ this.project.documentation_link = addProtocol(this.project.documentation_link);
 this.project.wiki_page = addProtocol(this.project.wiki_page);
 this.project.git_link = addProtocol(this.project.git_link);
 
-            dhpi.store(this.project)
+            const data = new FormData();
+            for (const [key, value] of Object.entries(this.project)) {
+              if (value === null || value === undefined) {
+                data.append(key, '');
+              } else if (value instanceof File) {
+                const fileKeys = { security_clearance_file: 'data_security_clearance_file', handover_document_file: 'data_handover_document_file' };
+                data.append(fileKeys[key] || key, value);
+              } else if (Array.isArray(value)) {
+                if (value.length === 0) {
+                  data.append(key, '');
+                } else if (typeof value[0] === 'object') {
+                  continue; // lookup lists, server ignores unknown keys
+                } else {
+                  value.forEach((item) => data.append(key + '[]', item));
+                }
+              } else if (typeof value === 'object') {
+                continue; // nested objects are not form fields
+              } else if (typeof value === 'boolean') {
+                if (value) data.append(key, '1');
+              } else {
+                data.append(key, value);
+              }
+            }
+
+            dhpi.store(data)
               .then(response => {
                 resolve(response.data);
               })
@@ -215,6 +305,42 @@ this.project.git_link = addProtocol(this.project.git_link);
           }        
         })
       });
+    },
+    selectSecurityClearanceFile(event) {
+      const file = event.target.files[0];
+
+      if (file) {
+        if (file.size / (1024 * 1024) > 10) {
+          event.preventDefault();
+          this.$message({
+            message: 'File size should be less than 10 MB',
+            type: "error",
+            duration: 5 * 1000,
+          });
+          event.target.value = null;
+          return;
+        }
+        this.project.security_clearance_file = file;
+        this.project.security_clearance = file.name;
+      }
+    },
+    selectHandoverFile(event) {
+      const file = event.target.files[0];
+
+      if (file) {
+        if (file.size / (1024 * 1024) > 10) {
+          event.preventDefault();
+          this.$message({
+            message: 'File size should be less than 10 MB',
+            type: "error",
+            duration: 5 * 1000,
+          });
+          event.target.value = null;
+          return;
+        }
+        this.project.handover_document_file = file;
+        this.project.handover_document = file.name;
+      }
     },
     async getFormDatas(){
       const data = await getFormData.list({type: 'licenses,applications,oses,languages,dbms,ownerships,osi_licenses,system_languages'})

@@ -94,6 +94,9 @@
       <el-descriptions-item label="Summary">
         {{ project.summary }}
       </el-descriptions-item>
+      <el-descriptions-item label="Is training available for users">
+        {{ project.training_available || '' }}
+      </el-descriptions-item>
       <el-descriptions-item 
         v-if="editor" 
         v-permission="['edit project']"
@@ -272,6 +275,7 @@ export default {
         if(response.legal_document){
           this.project.legal_document = response.legal_document
         }
+        this.project.training_available = response.training_available
       },
 
       formatKeywords(keywords) {
