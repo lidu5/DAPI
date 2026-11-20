@@ -478,19 +478,19 @@ class DigitalHealthProjectController extends Controller
             }
 
             if(isset($params["data_update_frequency"])){
-                if (!empty($params["data_update_frequency"])){
-                    $project->data_update_frequency_id = $params["data_update_frequency"];
-                } else {
-                    $project->data_update_frequency_id = null;
+                $frequency = $params["data_update_frequency"];
+                if (is_array($frequency)){
+                    $frequency = $frequency["id"] ?? null;
                 }
+                $project->data_update_frequency_id = !empty($frequency) ? $frequency : null;
             }
 
             if(isset($params["identifier_type"])){
-                if (!empty($params["identifier_type"])){
-                    $project->identifier_type_id = $params["identifier_type"];
-                } else {
-                    $project->identifier_type_id = null;
+                $identifierType = $params["identifier_type"];
+                if (is_array($identifierType)){
+                    $identifierType = $identifierType["id"] ?? null;
                 }
+                $project->identifier_type_id = !empty($identifierType) ? $identifierType : null;
             }
 
             if(isset($params["identifier_linked_to_fayda"])){

@@ -73,10 +73,10 @@
       <el-descriptions-item label="Project Website Link">
          <el-link type="primary" :href="project.project_website_link" target="_blank">{{ project.project_website_link }}</el-link>
       </el-descriptions-item>
-      <el-descriptions-item label="Local IP Address">
+      <el-descriptions-item v-if="frontend" label="Local IP Address">
         {{ project.local_ip }}
       </el-descriptions-item>
-      <el-descriptions-item label="Public IP Address">
+      <el-descriptions-item v-if="frontend" label="Public IP Address">
         {{ project.public_ip }}
       </el-descriptions-item>
       <el-descriptions-item label="Keywords">
