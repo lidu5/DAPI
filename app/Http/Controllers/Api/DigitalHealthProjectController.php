@@ -272,7 +272,8 @@ class DigitalHealthProjectController extends Controller
             }
 
             if(isset($params["data_partner"]) && !empty($params["data_partner"])){
-                $partnerIds = array_filter(explode(",", $params["data_partner"]), 'is_numeric');
+                $rawPartners = is_array($params["data_partner"]) ? $params["data_partner"] : explode(",", $params["data_partner"]);
+                $partnerIds = array_filter($rawPartners, 'is_numeric');
                 $project->partners()->detach();
                 foreach($partnerIds as $partner){
                     $project->partners()->attach(OrganizationUnit::find($partner));
@@ -413,10 +414,16 @@ class DigitalHealthProjectController extends Controller
             }
 
             if(isset($params["application_type"]) && !empty($params["application_type"])){
-                $project->application_types()->detach();
-                $typeIds = array_filter(explode(",", $params["application_type"]), 'is_numeric');
-                foreach($typeIds as $typeId){
-                    $project->application_types()->attach(ApplicationType::find($typeId));
+                $raw = $params["application_type"];
+                if (!is_array($raw)){
+                    $raw = explode(",", $raw);
+                }
+                $typeIds = array_filter(array_map(function($t){ return is_array($t) ? ($t["id"] ?? null) : $t; }, $raw), 'is_numeric');
+                if(!empty($typeIds)){
+                    $project->application_types()->detach();
+                    foreach($typeIds as $typeId){
+                        $project->application_types()->attach(ApplicationType::find($typeId));
+                    }
                 }
             }
 

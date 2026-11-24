@@ -243,7 +243,9 @@ export default {
               data.append('data_partner', this.project.partner);
             }
             data.append('component', this.project.component);
-            data.append('application_type', this.project.application_type);
+            if (this.project.application_type) {
+              data.append('application_type', this.project.application_type);
+            }
             data.append('start_date', this.project.start_date);
             data.append('end_date', this.project.end_date);
             data.append('contact_name', this.project.contact_name);
