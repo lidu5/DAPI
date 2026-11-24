@@ -5,6 +5,7 @@
 <script>
 import * as  echarts from 'echarts';
 require('echarts/theme/macarons'); // echarts theme
+import { markRaw } from 'vue';
 import { debounce } from '@/utils';
 
 import Resource from '@/api/resource';
@@ -43,7 +44,7 @@ export default {
     }, 100);
     window.addEventListener('resize', this.__resizeHandler);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (!this.chart) {
       return;
     }
@@ -53,7 +54,7 @@ export default {
   },
   methods: {
     initChart() {
-      this.chart = echarts.init(this.$el, 'macarons');
+      this.chart = markRaw(echarts.init(this.$el, 'macarons'));
     },
     async getData() {
       const { data } = await getDataRoute.list({});
